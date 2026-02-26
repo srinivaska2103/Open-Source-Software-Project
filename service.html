@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/code (2).png">
+    <title>Dev Base | Open Source</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .transition-all { transition: all 0.3s ease; }
+    </style>
+</head>
+<body class="bg-white text-slate-900 dark:bg-slate-900 dark:text-white transition-all">
+<nav class="fixed w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16 items-center">
+            <a href="index.html" class="flex-shrink-0 flex items-center gap-2">
+                <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white">
+                    <i class="fas fa-code"></i>
+                </div>
+                <span class="font-bold text-xl tracking-tight">DEV<span class="text-primary">BASE</span></span>
+            </a>
+
+            <div class="hidden lg:flex space-x-8 items-center">
+                <a href="index.html" class="nav-link hover:text-primary transition-colors">Home 1</a>
+                <a href="home2.html" class="nav-link hover:text-primary transition-colors">Home 2</a>
+                <a href="aboutus.html" class="nav-link hover:text-primary transition-colors">About</a>
+                <a href="documentation.html" class="nav-link hover:text-primary transition-colors">Documentation</a>
+                <a href="service.html" class="nav-link hover:text-primary transition-colors">Services</a>
+                <a href="pricing.html" class="nav-link hover:text-primary transition-colors">Pricing</a>
+                <a href="contact.html" class="nav-link hover:text-primary transition-colors">Contact</a>
+            </div>
+
+            <div class="lg:hidden flex items-center gap-2">
+                <button onclick="toggleTheme()" class="p-2 rounded-full"><i id="theme-icon-mobile" class="fas fa-moon"></i></button>
+                <button onclick="toggleMenu()" class="text-2xl p-2 text-slate-600 dark:text-slate-300">
+                    <i id="menu-toggle-icon" class="fas fa-bars"></i>
+                </button>
+            </div>
+            
+            <div class="hidden lg:flex items-center gap-4">
+                <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800">
+                    <i id="theme-icon" class="fas fa-moon"></i>
+                
+                <button onclick="toggleDir()" class="text-xs font-bold border px-2 py-1 rounded hover:border-primary transition-all">
+    LTR / RTL
+</button></button>
+                <!-- <button onclick="toggleDir()" class="text-xs font-bold border px-2 py-1 rounded hover:border-primary">LTR/RTL</button> -->
+                <a href="login.html">
+                    <button class="bg-primary text-white px-5 py-2 rounded-full font-medium hover:opacity-90 transition-all">Register</button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden lg:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-6 py-8 shadow-xl">
+        <div class="flex flex-col space-y-2">
+            <a href="index.html" class="nav-link block py-3 text-lg font-medium border-b border-slate-100 dark:border-slate-800 last:border-0 hover:text-primary">Home 1</a>
+            <a href="home2.html" class="nav-link block py-3 text-lg font-medium border-b border-slate-100 dark:border-slate-800 last:border-0 hover:text-primary">Home 2</a>
+            <a href="aboutus.html" class="nav-link block py-3 text-lg font-medium border-b border-slate-100 dark:border-slate-800 last:border-0 hover:text-primary">About</a>
+            <a href="documentation.html" class="nav-link block py-3 text-lg font-medium border-b border-slate-100 dark:border-slate-800 last:border-0 hover:text-primary">Documentation</a>
+            <a href="service.html" class="nav-link block py-3 text-lg font-medium border-b border-slate-100 dark:border-slate-800 last:border-0 hover:text-primary">Services</a>
+            <a href="pricing.html" class="nav-link block py-3 text-lg font-medium border-b border-slate-100 dark:border-slate-800 last:border-0 hover:text-primary">Pricing</a>
+            <a href="contact.html" class="nav-link block py-3 text-lg font-medium border-b border-slate-100 dark:border-slate-800 last:border-0 hover:text-primary">Contact</a>
+        </div>
+        
+        <div class="mt-8 space-y-4">
+            <a href="login.html" class="block">
+                <button class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg">Register Now</button>
+            </a>
+           <button onclick="toggleDir()" class="text-xs font-bold border px-2 py-1 rounded hover:border-primary transition-all">
+    LTR / RTL
+</button>
+            <!-- <button onclick="toggleDir()" class="w-full border border-slate-300 dark:border-slate-700 py-3 rounded-xl font-medium">Switch LTR/RTL</button> -->
+        </div>
+    </div>
+</nav>
+   
+
+<style>
+    /* Base Transition for all links */
+.nav-link {
+    transition: all 0.2s ease-in-out;
+}
+
+/* Global Active Class */
+.nav-link-active {
+    color: #3b82f6 !important; /* Tailwind Primary Blue */
+    font-weight: 700;
+}
+
+/* Desktop Specific (Large screens) */
+@media (min-width: 1024px) {
+    .nav-link-active {
+        position: relative;
+    }
+    .nav-link-active::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: #3b82f6;
+        border-radius: 99px;
+    }
+}
+
+/* Mobile & Tablet Specific (Below 1024px) */
+@media (max-width: 1023px) {
+    .nav-link-active {
+        background-color: rgba(59, 130, 246, 0.05); /* Very light blue tint */
+        padding-left: 12px; /* Slight indent to show it's active */
+        border-left: 4px solid #3b82f6;
+    }
+}
+</style>
+<script>
+    // Function to handle Active State
+function handleActiveNav() {
+    const currentPath = window.location.pathname;
+    const links = document.querySelectorAll('.nav-link');
+
+    links.forEach(link => {
+        const linkPath = link.getAttribute('href');
+        
+        // Matches if current path ends with the link path (e.g., /aboutus.html)
+        // Also handles the root "/" matching "index.html"
+        if (currentPath.endsWith(linkPath) || (currentPath === '/' && linkPath === '/index.html')) {
+            link.classList.add('nav-link-active');
+        } else {
+            link.classList.remove('nav-link-active');
+        }
+    });
+}
+
+// Function to toggle Mobile/Tablet Menu
+function toggleMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const icon = document.getElementById('menu-toggle-icon');
+    
+    const isHidden = menu.classList.toggle('hidden');
+    
+    if (isHidden) {
+        icon.classList.replace('fa-times', 'fa-bars');
+    } else {
+        icon.classList.replace('fa-bars', 'fa-times');
+    }
+}
+
+// Run on page load
+window.addEventListener('DOMContentLoaded', handleActiveNav);
+</script>
+<section id="service-hero" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white dark:bg-slate-950 transition-colors duration-500">
+    
+    <div class="absolute top-0 right-0 w-1/2 h-full bg-primary/5 -skew-x-12 transform origin-top-right -z-10 hidden lg:block"></div>
+    <div class="absolute -top-24 -left-24 w-96 h-96 bg-primary/10 blur-[100px] rounded-full -z-10"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            
+            <div class="reveal-up text-center lg:text-left">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20 mb-6">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                    </span>
+                    <span class="text-[10px] font-black uppercase tracking-[0.2em]">Our Solutions</span>
+                </div>
+
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-black mb-6 leading-[1.1] tracking-tight text-slate-900 dark:text-white">
+                    Cloud Native <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-600">Infrastructure</span>
+                </h1>
+                
+                <p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                    Scale your open-source projects with enterprise-grade managed services. We handle the complexity so you can focus on the code.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                   <a href="login.html">
+                     <button class="w-full sm:w-auto px-10 py-5 bg-primary text-white font-black rounded-2xl shadow-xl shadow-primary/30 hover:-translate-y-1 active:scale-95 transition-all">
+                        Get Started
+                    </button>
+                   </a>
+                   <a href="service.html">
+<button class="w-full sm:w-auto px-10 py-5 border-2 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 font-bold rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-all flex items-center justify-center gap-2 group">
+                        Explore Features <i class="fas fa-arrow-right text-xs transition-transform group-hover:translate-x-1"></i>
+                    </button>
+                   </a>
+                    
+                </div>
+
+                <div class="mt-12 hidden md:flex items-center justify-center lg:justify-start gap-12 border-t border-slate-100 dark:border-slate-800 pt-8">
+                    <div>
+                        <div class="text-2xl font-black text-slate-900 dark:text-white">99.9%</div>
+                        <div class="text-xs uppercase font-bold text-slate-400 tracking-widest">Uptime</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-black text-slate-900 dark:text-white">24/7</div>
+                        <div class="text-xs uppercase font-bold text-slate-400 tracking-widest">Support</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-black text-slate-900 dark:text-white">10k+</div>
+                        <div class="text-xs uppercase font-bold text-slate-400 tracking-widest">Deployments</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reveal-up delay-200 relative">
+                <div class="relative z-10 p-4 bg-white dark:bg-slate-900 rounded-[2.5rem] border border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden group">
+                    <div class="bg-slate-950 rounded-[1.8rem] h-[300px] md:h-[450px] p-6 relative overflow-hidden">
+                        <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#3b82f6_1px,transparent_1px)] [background-size:20px_20px]"></div>
+                        
+                        <div class="absolute top-10 left-10 p-4 glass rounded-2xl border border-white/10 animate-float">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center text-white text-xs">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <div class="space-y-1">
+                                    <div class="w-16 h-1.5 bg-white/20 rounded-full"></div>
+                                    <div class="w-10 h-1.5 bg-white/10 rounded-full"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="absolute bottom-10 right-10 p-4 glass rounded-2xl border border-white/10 animate-float delay-75">
+                            <div class="text-xs font-mono text-primary mb-2">$ system_deploy</div>
+                            <div class="w-32 h-2 bg-primary/30 rounded-full animate-pulse"></div>
+                        </div>
+
+                        <div class="flex items-center justify-center h-full">
+                            <div class="w-24 h-24 bg-primary/20 rounded-full flex items-center justify-center text-primary text-5xl animate-pulse">
+                                <i class="fas fa-server"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="absolute -top-10 -right-10 w-full h-full bg-primary/20 blur-[100px] rounded-full -z-10 group-hover:bg-primary/30 transition-all"></div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<style>
+    .glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); }
+    @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-15px); }
+    }
+    .animate-float { animation: float 4s ease-in-out infinite; }
+</style>
+
+
+<section id="what-we-offer" class="py-24 bg-slate-50 dark:bg-slate-900/50 transition-colors duration-500 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="max-w-3xl mb-16 reveal-up">
+           <div class="flex flex-col items-center lg:items-start text-center lg:text-left reveal-up">
+    
+    <h2 class="text-3xl md:text-5xl font-black text-slate-900 dark:text-white mb-6 leading-tight">
+        Solutions built for the 
+        <br class="hidden lg:block"> 
+        <span class="text-primary">Next Generation.</span>
+    </h2>
+
+</div>
+            <p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 leading-relaxed">
+                We provide a comprehensive suite of tools designed to simplify complex cloud workflows. 
+                From automated scaling to global security, our services empower you to build faster and safer.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <div class="reveal-up group p-1 rounded-[2rem] bg-gradient-to-br from-slate-200 to-transparent dark:from-slate-700 dark:to-transparent hover:from-primary transition-all duration-500">
+                <div class="bg-white dark:bg-slate-900 rounded-[1.9rem] p-8 h-full flex flex-col">
+                    <div class="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mb-8 group-hover:bg-primary group-hover:text-white group-hover:rotate-12 transition-all duration-300">
+                        <i class="fas fa-cloud-upload-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 dark:text-white">Cloud Infrastructure</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-8 flex-grow">
+                        Managed Kubernetes clusters and serverless environments that scale automatically based on your traffic demands.
+                    </p>
+                    <a href="#" class="inline-flex items-center gap-2 text-sm font-bold text-primary group-hover:gap-4 transition-all">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="reveal-up delay-100 group p-1 rounded-[2rem] bg-gradient-to-br from-slate-200 to-transparent dark:from-slate-700 dark:to-transparent hover:from-blue-500 transition-all duration-500">
+                <div class="bg-white dark:bg-slate-900 rounded-[1.9rem] p-8 h-full flex flex-col">
+                    <div class="w-14 h-14 bg-blue-500/10 text-blue-500 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-blue-500 group-hover:text-white group-hover:rotate-12 transition-all duration-300">
+                        <i class="fas fa-shield-alt text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 dark:text-white">Security & Identity</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-8 flex-grow">
+                        Enterprise-grade SSO, OAuth2, and end-to-end encryption to keep your user data protected and compliant globally.
+                    </p>
+                    <a href="#" class="inline-flex items-center gap-2 text-sm font-bold text-blue-500 group-hover:gap-4 transition-all">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="reveal-up delay-200 group p-1 rounded-[2rem] bg-gradient-to-br from-slate-200 to-transparent dark:from-slate-700 dark:to-transparent hover:from-cyan-400 transition-all duration-500">
+    <div class="bg-white dark:bg-slate-900 rounded-[1.9rem] p-8 h-full flex flex-col">
+        <div class="w-14 h-14 bg-cyan-400/10 text-cyan-500 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-cyan-400 group-hover:text-white group-hover:rotate-12 transition-all duration-300">
+            <i class="fas fa-microchip text-2xl"></i>
+        </div>
+        <h3 class="text-2xl font-bold mb-4 dark:text-white">Edge Computing</h3>
+        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-8 flex-grow">
+            Deploy your logic closer to users with ultra-low latency edge functions and global content delivery networks.
+        </p>
+        <a href="#" class="inline-flex items-center gap-2 text-sm font-bold text-cyan-500 group-hover:gap-4 transition-all">
+            Explore Engine <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+</div>
+<div class="reveal-up delay-300 group p-1 rounded-[2rem] bg-gradient-to-br from-slate-200 to-transparent dark:from-slate-700 dark:to-transparent hover:from-purple-500 transition-all duration-500">
+    <div class="bg-white dark:bg-slate-900 rounded-[1.9rem] p-8 h-full flex flex-col">
+        <div class="w-14 h-14 bg-purple-500/10 text-purple-500 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-purple-500 group-hover:text-white group-hover:rotate-12 transition-all duration-300">
+            <i class="fas fa-server text-2xl"></i>
+        </div>
+        <h3 class="text-2xl font-bold mb-4 dark:text-white">Auto-Scaling Ops</h3>
+        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-8 flex-grow">
+            Automatically handle traffic spikes with intelligent resource allocation and container orchestration out of the box.
+        </p>
+        <a href="#" class="inline-flex items-center gap-2 text-sm font-bold text-purple-500 group-hover:gap-4 transition-all">
+            Scale Smart <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+</div>
+<div class="reveal-up delay-400 group p-1 rounded-[2rem] bg-gradient-to-br from-slate-200 to-transparent dark:from-slate-700 dark:to-transparent hover:from-green-500 transition-all duration-500">
+    <div class="bg-white dark:bg-slate-900 rounded-[1.9rem] p-8 h-full flex flex-col">
+        <div class="w-14 h-14 bg-green-500/10 text-green-500 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-green-500 group-hover:text-white group-hover:rotate-12 transition-all duration-300">
+            <i class="fas fa-chart-pie text-2xl"></i>
+        </div>
+        <h3 class="text-2xl font-bold mb-4 dark:text-white">Insight Dashboard</h3>
+        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-8 flex-grow">
+            Visualize user behavior and system performance in real-time with built-in telemetry and customizable reporting.
+        </p>
+        <a href="#" class="inline-flex items-center gap-2 text-sm font-bold text-green-500 group-hover:gap-4 transition-all">
+            View Metrics <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+</div>
+
+            <div class="reveal-up delay-200 group p-1 rounded-[2rem] bg-gradient-to-br from-slate-200 to-transparent dark:from-slate-700 dark:to-transparent hover:from-purple-500 transition-all duration-500">
+                <div class="bg-white dark:bg-slate-900 rounded-[1.9rem] p-8 h-full flex flex-col">
+                    <div class="w-14 h-14 bg-purple-500/10 text-purple-500 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-purple-500 group-hover:text-white group-hover:rotate-12 transition-all duration-300">
+                        <i class="fas fa-chart-line text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 dark:text-white">Real-time Analytics</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-8 flex-grow">
+                        Deep-dive insights into your application performance with custom dashboards and automated error reporting.
+                    </p>
+                    <a href="#" class="inline-flex items-center gap-2 text-sm font-bold text-purple-500 group-hover:gap-4 transition-all">
+                        Learn More <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="core-services" class="py-24 bg-white dark:bg-slate-950 transition-colors duration-500 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center mb-16 reveal-up">
+            <h2 class="text-3xl md:text-5xl font-black text-slate-900 dark:text-white mb-6">
+                Our <span class="text-primary">Core Services</span>
+            </h2>
+            <p class="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">
+                Empowering your vision with cutting-edge technology and seamless open-source integrations.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <div class="reveal-up group relative overflow-hidden rounded-[2.5rem] bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 hover:border-primary transition-all duration-500 shadow-xl hover:shadow-primary/10">
+                <div class="relative z-10">
+                    <div class="w-16 h-16 mb-6 rounded-2xl bg-purple-500/10 text-purple-500 flex items-center justify-center text-3xl group-hover:bg-purple-500 group-hover:text-white transition-all duration-300">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 dark:text-white">Software Development</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-6">
+                        End-to-end development of custom applications tailored to your unique business needs.
+                    </p>
+                    <img src="assets/s1" alt="Software Development" class="w-full h-40 object-cover rounded-2xl grayscale group-hover:grayscale-0 transition-all duration-500">
+                </div>
+            </div>
+
+            <div class="reveal-up delay-100 group relative overflow-hidden rounded-[2.5rem] bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 hover:border-primary transition-all duration-500 shadow-xl hover:shadow-primary/10">
+                <div class="relative z-10">
+                    <div class="w-16 h-16 mb-6 rounded-2xl bg-blue-500/10 text-blue-500 flex items-center justify-center text-3xl group-hover:bg-blue-500 group-hover:text-white transition-all duration-300">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 dark:text-white">Open-Source Solutions</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-6">
+                        Leveraging global collaboration to build transparent, secure, and scalable ecosystems.
+                    </p>
+                    <img src="assets/s2" alt="Open Source" class="w-full h-40 object-cover rounded-2xl grayscale group-hover:grayscale-0 transition-all duration-500">
+                </div>
+            </div>
+
+            <div class="reveal-up delay-200 group relative overflow-hidden rounded-[2.5rem] bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 hover:border-primary transition-all duration-500 shadow-xl hover:shadow-primary/10">
+                <div class="relative z-10">
+                    <div class="w-16 h-16 mb-6 rounded-2xl bg-indigo-500/10 text-indigo-500 flex items-center justify-center text-3xl group-hover:bg-indigo-500 group-hover:text-white transition-all duration-300">
+                        <i class="fas fa-plug"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 dark:text-white">Custom Integration</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-6">
+                        Seamlessly connecting disparate systems to ensure unified data flow and workflows.
+                    </p>
+                    <img src="assets/s3" alt="Integration" class="w-full h-40 object-cover rounded-2xl grayscale group-hover:grayscale-0 transition-all duration-500">
+                </div>
+            </div>
+
+            <div class="reveal-up delay-300 group relative overflow-hidden rounded-[2.5rem] bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 hover:border-primary transition-all duration-500 shadow-xl hover:shadow-primary/10">
+                <div class="relative z-10">
+                    <div class="w-16 h-16 mb-6 rounded-2xl bg-green-500/10 text-green-500 flex items-center justify-center text-3xl group-hover:bg-green-500 group-hover:text-white transition-all duration-300">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 dark:text-white">API Development</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-6">
+                        Designing robust RESTful and GraphQL APIs that allow your applications to scale.
+                    </p>
+                    <img src="assets/s4" alt="API Development" class="w-full h-40 object-cover rounded-2xl grayscale group-hover:grayscale-0 transition-all duration-500">
+                </div>
+            </div>
+
+            <div class="reveal-up delay-400 group relative overflow-hidden rounded-[2.5rem] bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 hover:border-orange-500 transition-all duration-500 shadow-xl hover:shadow-orange-500/10">
+                <div class="relative z-10">
+                    <div class="w-16 h-16 mb-6 rounded-2xl bg-orange-500/10 text-orange-500 flex items-center justify-center text-3xl group-hover:bg-orange-500 group-hover:text-white transition-all duration-300 shadow-sm">
+                        <i class="fas fa-puzzle-piece"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 dark:text-white">Plugin Support</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-6">
+                        Extending functionality of platforms with custom-built browser extensions and plugins.
+                    </p>
+                    <img src="assets/s5" alt="Plugin Support" class="w-full h-40 object-cover rounded-2xl grayscale group-hover:grayscale-0 transition-all duration-500">
+                </div>
+            </div>
+
+            <div class="reveal-up delay-500 group relative overflow-hidden rounded-[2.5rem] bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-8 hover:border-purple-500 transition-all duration-500 shadow-xl hover:shadow-purple-500/10">
+                <div class="absolute -top-24 -right-24 w-48 h-48 bg-purple-500/5 blur-[80px] rounded-full group-hover:bg-purple-500/20 transition-all duration-700"></div>
+                <div class="relative z-10">
+                    <div class="w-16 h-16 mb-6 rounded-2xl bg-purple-500/10 text-purple-500 flex items-center justify-center text-3xl group-hover:bg-purple-500 group-hover:text-white group-hover:-translate-y-2 transition-all duration-300 shadow-sm">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 dark:text-white">Smart Infrastructure</h3>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed mb-6">
+                        Autonomous scaling and self-healing systems that adapt to traffic spikes in real-time.
+                    </p>
+                    <img src="assets/s6" alt="Infrastructure" class="w-full h-40 object-cover rounded-2xl grayscale brightness-50 group-hover:grayscale-0 transition-all duration-500">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section id="process" class="py-24 bg-slate-50 dark:bg-slate-900 transition-colors duration-500 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center mb-20 reveal-up">
+            <h2 class="text-3xl md:text-5xl font-black text-slate-900 dark:text-white mb-6">
+                Our <span class="text-primary">Implementation</span> Journey
+            </h2>
+            <p class="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-lg">
+                A streamlined, five-stage process designed to take your vision from a concept to a global production-ready reality.
+            </p>
+        </div>
+
+        <div class="relative flex flex-col md:items-center lg:flex-row justify-between items-start lg:items-center gap-12 lg:gap-4">
+    
+    <div class="absolute hidden lg:block top-1/2 left-0 w-full h-1 bg-slate-200 dark:bg-slate-800 -translate-y-1/2 -z-10">
+        <div class="h-full bg-primary w-0 transition-all duration-1000 ease-out delay-500" id="progress-line"></div>
+    </div>
+
+    <div class="process-step reveal-up flex md:flex-col items-center gap-6 lg:gap-8 lg:w-1/5 group">
+        <div class="w-16 h-16 lg:w-20 lg:h-20 rounded-3xl bg-white dark:bg-slate-800 border-4 border-slate-100 dark:border-slate-700 flex items-center justify-center text-2xl lg:text-3xl text-primary shadow-xl group-hover:bg-primary group-hover:text-white group-hover:scale-110 transition-all duration-500 z-10">
+            <i class="fas fa-map-marked-alt"></i>
+        </div>
+        <div class="text-left md:text-center">
+            <h4 class="text-xl font-bold dark:text-white mb-2">1. Plan</h4>
+            <p class="text-sm text-slate-500 dark:text-slate-400">Architecture design & strategy.</p>
+        </div>
+    </div>
+
+    <div class="process-step reveal-up delay-100 flex md:flex-col items-center gap-6 lg:gap-8 lg:w-1/5 group">
+        <div class="w-16 h-16 lg:w-20 lg:h-20 rounded-3xl bg-white dark:bg-slate-800 border-4 border-slate-100 dark:border-slate-700 flex items-center justify-center text-2xl lg:text-3xl text-primary shadow-xl group-hover:bg-primary group-hover:text-white group-hover:scale-110 transition-all duration-500 z-10">
+            <i class="fas fa-tools"></i>
+        </div>
+        <div class="text-left md:text-center">
+            <h4 class="text-xl font-bold dark:text-white mb-2">2. Setup</h4>
+            <p class="text-sm text-slate-500 dark:text-slate-400">Infrastructure & env initialization.</p>
+        </div>
+    </div>
+
+    <div class="process-step reveal-up delay-200 flex md:flex-col items-center gap-6 lg:gap-8 lg:w-1/5 group">
+        <div class="w-16 h-16 lg:w-20 lg:h-20 rounded-3xl bg-white dark:bg-slate-800 border-4 border-slate-100 dark:border-slate-700 flex items-center justify-center text-2xl lg:text-3xl text-primary shadow-xl group-hover:bg-primary group-hover:text-white group-hover:scale-110 transition-all duration-500 z-10">
+            <i class="fas fa-sliders-h"></i>
+        </div>
+        <div class="text-left md:text-center">
+            <h4 class="text-xl font-bold dark:text-white mb-2">3. Customize</h4>
+            <p class="text-sm text-slate-500 dark:text-slate-400">Tailoring logic to your needs.</p>
+        </div>
+    </div>
+
+    <div class="process-step reveal-up delay-300 flex md:flex-col items-center gap-6 lg:gap-8 lg:w-1/5 group">
+        <div class="w-16 h-16 lg:w-20 lg:h-20 rounded-3xl bg-white dark:bg-slate-800 border-4 border-slate-100 dark:border-slate-700 flex items-center justify-center text-2xl lg:text-3xl text-primary shadow-xl group-hover:bg-primary group-hover:text-white group-hover:scale-110 transition-all duration-500 z-10">
+            <i class="fas fa-rocket"></i>
+        </div>
+        <div class="text-left md:text-center">
+            <h4 class="text-xl font-bold dark:text-white mb-2">4. Deploy</h4>
+            <p class="text-sm text-slate-500 dark:text-slate-400">CI/CD & cloud distribution.</p>
+        </div>
+    </div>
+
+    <div class="process-step reveal-up delay-400 flex md:flex-col items-center gap-6 lg:gap-8 lg:w-1/5 group">
+        <div class="w-16 h-16 lg:w-20 lg:h-20 rounded-3xl bg-white dark:bg-slate-800 border-4 border-slate-100 dark:border-slate-700 flex items-center justify-center text-2xl lg:text-3xl text-primary shadow-xl group-hover:bg-primary group-hover:text-white group-hover:scale-110 transition-all duration-500 z-10">
+            <i class="fas fa-headset"></i>
+        </div>
+        <div class="text-left md:text-center">
+            <h4 class="text-xl font-bold dark:text-white mb-2">5. Support</h4>
+            <p class="text-sm text-slate-500 dark:text-slate-400">Monitoring & regular updates.</p>
+        </div>
+    </div>
+
+</div>
+    </div>
+</section>
+
+<script>
+    // Intersection Observer to animate the progress line on desktop
+    const processSection = document.querySelector('#process');
+    const progressLine = document.querySelector('#progress-line');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                progressLine.style.width = '100%';
+            }
+        });
+    }, { threshold: 0.5 });
+
+    observer.observe(processSection);
+</script>
+<section id="use-cases" class="py-24 bg-white dark:bg-slate-950 transition-colors duration-500 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center mb-16 reveal-up">
+            <h2 class="text-3xl md:text-5xl font-black text-slate-900 dark:text-white mb-6">Built for <span class="text-primary">Everyone</span></h2>
+            <p class="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">Select your profile to see how DEV BASE accelerates your specific workflow.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-4 flex flex-col gap-4">
+                <button onclick="switchUseCase('devs', this)" class="usecase-btn active-case p-6 rounded-3xl border border-slate-200 dark:border-slate-800 text-left transition-all hover:border-primary group">
+                    <h4 class="font-bold text-lg dark:text-white group-hover:text-primary transition-colors">Developers</h4>
+                    <p class="text-xs text-slate-500 mt-1">API-first tools and CLI mastery.</p>
+                </button>
+                <button onclick="switchUseCase('startups', this)" class="usecase-btn p-6 rounded-3xl border border-slate-200 dark:border-slate-800 text-left transition-all hover:border-primary group">
+                    <h4 class="font-bold text-lg dark:text-white group-hover:text-primary transition-colors">Startups</h4>
+                    <p class="text-xs text-slate-500 mt-1">Scale fast with zero infra overhead.</p>
+                </button>
+                <button onclick="switchUseCase('enterprise', this)" class="usecase-btn p-6 rounded-3xl border border-slate-200 dark:border-slate-800 text-left transition-all hover:border-primary group">
+                    <h4 class="font-bold text-lg dark:text-white group-hover:text-primary transition-colors">Enterprises</h4>
+                    <p class="text-xs text-slate-500 mt-1">Security, SSO, and dedicated SLAs.</p>
+                </button>
+                <button onclick="switchUseCase('community', this)" class="usecase-btn p-6 rounded-3xl border border-slate-200 dark:border-slate-800 text-left transition-all hover:border-primary group">
+                    <h4 class="font-bold text-lg dark:text-white group-hover:text-primary transition-colors">Community Projects</h4>
+                    <p class="text-xs text-slate-500 mt-1">Open-source forever, free hosting.</p>
+                </button>
+            </div>
+
+            <div class="lg:col-span-8 bg-slate-50 dark:bg-slate-900 rounded-[3rem] p-8 md:p-12 min-h-[400px] flex flex-col justify-center relative overflow-hidden shadow-2xl">
+                <div id="usecase-content" class="relative z-10 transition-opacity duration-300">
+                    <h3 id="uc-title" class="text-3xl font-black text-primary mb-6">Developers</h3>
+                    <ul id="uc-list" class="space-y-4 text-slate-600 dark:text-slate-400">
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-primary"></i> Full CLI integration for terminal-based workflows.</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-primary"></i> Detailed API documentation with code sandboxes.</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-check-circle text-primary"></i> Support for 15+ programming languages.</li>
+                    </ul>
+                </div>
+                <div class="absolute -bottom-20 -right-20 text-[200px] text-primary/5 rotate-12">
+                    <i id="uc-icon" class="fas fa-code"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .active-case { border-color: #3b82f6 !important; background: rgba(59, 130, 246, 0.05); transform: translateX(10px); }
+</style>
+<section id="support" class="py-24 bg-slate-50 dark:bg-slate-900/50 transition-colors duration-500">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center mb-16 reveal-up">
+            <h2 class="text-3xl md:text-5xl font-black text-slate-900 dark:text-white mb-6">Infinite <span class="text-primary">Support</span></h2>
+            <p class="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">We don't just deploy; we maintain, secure, and grow your infrastructure 24/7.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            <div class="reveal-up p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:shadow-2xl transition-all group">
+                <div class="w-12 h-12 bg-green-500/10 text-green-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                    <i class="fas fa-sync-alt"></i>
+                </div>
+                <h4 class="font-bold text-lg dark:text-white mb-2">Weekly Updates</h4>
+                <p class="text-sm text-slate-500">Automated patches and feature rollouts every Tuesday.</p>
+            </div>
+
+            <div class="reveal-up delay-100 p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:shadow-2xl transition-all group">
+                <div class="w-12 h-12 bg-red-500/10 text-red-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                    <i class="fas fa-bug"></i>
+                </div>
+                <h4 class="font-bold text-lg dark:text-white mb-2">Rapid Bug Fixes</h4>
+                <p class="text-sm text-slate-500">Critical issues resolved in under 4 hours, guaranteed.</p>
+            </div>
+
+            <div class="reveal-up delay-200 p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:shadow-2xl transition-all group">
+                <div class="w-12 h-12 bg-blue-500/10 text-blue-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                    <i class="fas fa-book"></i>
+                </div>
+                <h4 class="font-bold text-lg dark:text-white mb-2">Doc Support</h4>
+                <p class="text-sm text-slate-500">Comprehensive guides and 1-on-1 documentation help.</p>
+            </div>
+
+            <div class="reveal-up delay-300 p-8 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:shadow-2xl transition-all group">
+                <div class="w-12 h-12 bg-purple-500/10 text-purple-500 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h4 class="font-bold text-lg dark:text-white mb-2">Community Help</h4>
+                <p class="text-sm text-slate-500">Access to our private Discord with 10k+ contributors.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<script>
+    const ucData = {
+        devs: { title: "Developers", icon: "fa-code", list: ["Full CLI integration.", "API Sandboxes.", "15+ Languages."] },
+        startups: { title: "Startups", icon: "fa-rocket", list: ["Pay-as-you-grow pricing.", "Zero-config deployment.", "Rapid scaling."] },
+        enterprise: { title: "Enterprises", icon: "fa-building", list: ["99.99% Uptime SLA.", "Single Sign-On (SSO).", "Dedicated Support."] },
+        community: { title: "Community", icon: "fa-heart", list: ["Free hosting for OSS.", "Public discussions.", "Grant programs."] }
+    };
+
+    function switchUseCase(key, btn) {
+        document.querySelectorAll('.usecase-btn').forEach(b => b.classList.remove('active-case'));
+        btn.classList.add('active-case');
+
+        const content = document.getElementById('usecase-content');
+        content.classList.add('opacity-0');
+
+        setTimeout(() => {
+            document.getElementById('uc-title').innerText = ucData[key].title;
+            document.getElementById('uc-icon').className = `fas ${ucData[key].icon}`;
+            document.getElementById('uc-list').innerHTML = ucData[key].list.map(item => 
+                `<li class="flex items-center gap-3"><i class="fas fa-check-circle text-primary"></i> ${item}</li>`
+            ).join('');
+            content.classList.remove('opacity-0');
+        }, 300);
+    }
+</script>
+<section id="why-choose-us" class="py-24 bg-white dark:bg-slate-950 transition-colors duration-500 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center mb-20 reveal-up">
+            <h2 class="text-3xl md:text-5xl font-black text-slate-900 dark:text-white mb-6">
+                Why Build with <span class="text-primary">DEV BASE?</span>
+            </h2>
+            <p class="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto text-lg">
+                We combine the freedom of open-source with the power of enterprise-grade infrastructure to give you the ultimate development experience.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <div class="reveal-up group relative p-8 md:p-12 rounded-[2.5rem] bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-primary transition-all duration-500 overflow-hidden">
+                <div class="relative z-10">
+                    <div class="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center text-2xl mb-8 group-hover:bg-primary group-hover:text-white group-hover:rotate-[360deg] transition-all duration-700">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 dark:text-white">Open-Source Transparency</h3>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                        No black boxes. Our core code is open for inspection, contribution, and self-hosting, ensuring you always have full control over your stack.
+                    </p>
+                </div>
+                <i class="fas fa-code absolute -bottom-10 -right-10 text-9xl text-slate-200 dark:text-slate-800/30 opacity-50 group-hover:rotate-12 transition-transform duration-500"></i>
+            </div>
+
+            <div class="reveal-up delay-100 group relative p-8 md:p-12 rounded-[2.5rem] bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-green-500 transition-all duration-500 overflow-hidden">
+                <div class="relative z-10">
+                    <div class="w-14 h-14 bg-green-500/10 text-green-500 rounded-2xl flex items-center justify-center text-2xl mb-8 group-hover:bg-green-500 group-hover:text-white transition-all duration-300">
+                        <i class="fas fa-shield-check"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 dark:text-white">Secure & Scalable</h3>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                        Built with security-first architecture. Our auto-scaling engine handles everything from 10 to 10 million requests without breaking a sweat.
+                    </p>
+                </div>
+                <i class="fas fa-bolt absolute -bottom-10 -right-10 text-9xl text-green-500/10 opacity-50 group-hover:scale-110 transition-transform duration-500"></i>
+            </div>
+
+            <div class="reveal-up delay-200 group relative p-8 md:p-12 rounded-[2.5rem] bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-purple-500 transition-all duration-500 overflow-hidden">
+                <div class="relative z-10">
+                    <div class="w-14 h-14 bg-purple-500/10 text-purple-500 rounded-2xl flex items-center justify-center text-2xl mb-8 group-hover:bg-purple-500 group-hover:text-white transition-all duration-300">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 dark:text-white">Community Driven</h3>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                        Our roadmap is shaped by you. Join thousands of developers contributing to a toolset that solves real-world engineering challenges.
+                    </p>
+                </div>
+                <i class="fas fa-heart absolute -bottom-10 -right-10 text-9xl text-purple-500/10 opacity-50 group-hover:scale-125 transition-transform duration-500"></i>
+            </div>
+
+            <div class="reveal-up delay-300 group relative p-8 md:p-12 rounded-[2.5rem] bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-orange-500 transition-all duration-500 overflow-hidden">
+                <div class="relative z-10">
+                    <div class="w-14 h-14 bg-orange-500/10 text-orange-500 rounded-2xl flex items-center justify-center text-2xl mb-8 group-hover:bg-orange-500 group-hover:text-white transition-all duration-300">
+                        <i class="fas fa-terminal"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 dark:text-white">Developer Friendly</h3>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                        Intuitive CLI, robust SDKs, and documentation that actually makes sense. We focus on the DX (Developer Experience) so you can focus on building.
+                    </p>
+                </div>
+                <i class="fas fa-keyboard absolute -bottom-10 -right-10 text-9xl text-orange-500/10 opacity-50 group-hover:-translate-y-4 transition-transform duration-500"></i>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section id="final-cta" class="py-24 bg-white dark:bg-slate-950 transition-colors duration-500 overflow-hidden relative">
+    
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-4xl bg-primary/20 blur-[120px] rounded-full opacity-50 pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="bg-slate-900 dark:bg-slate-900 rounded-[3rem] p-8 md:p-16 lg:p-20 text-center relative overflow-hidden shadow-2xl border border-white/5">
+            
+            <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none select-none font-mono text-[10px] text-white p-10 leading-relaxed hidden md:block">
+                git commit -m "initial deploy" <br>
+                npm install @devbase/core <br>
+                devbase init --production <br>
+                status: ready_to_build
+            </div>
+
+            <div class="reveal-up">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-primary border border-white/10 mb-8">
+                    <i class="fas fa-rocket text-xs animate-bounce"></i>
+                    <span class="text-[10px] font-black uppercase tracking-[0.2em] text-white">Ready to start?</span>
+                </div>
+
+                <h2 class="text-4xl md:text-6xl font-black text-white mb-8 leading-tight tracking-tighter">
+                    Fuel your code with <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-400 to-cyan-400">limitless power.</span>
+                </h2>
+                
+                <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed">
+                    Join over 10,000 developers building the future of open-source. Start your first project in less than 5 minutes.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="login.html" class="w-full sm:w-auto px-10 py-5 bg-primary text-white font-black rounded-2xl shadow-xl shadow-primary/40 hover:-translate-y-1 active:scale-95 transition-all text-center">
+                        Create Free Account
+                    </a>
+                    <a href="documentation.html" class="w-full sm:w-auto px-10 py-5 bg-white/5 border border-white/10 text-white font-bold rounded-2xl hover:bg-white/10 transition-all text-center group">
+                        Read the Docs <i class="fas fa-arrow-right ml-2 text-xs transition-transform group-hover:translate-x-1"></i>
+                    </a>
+                </div>
+
+                <div class="mt-16 pt-12 border-t border-white/5 flex flex-col md:flex-row items-center justify-center gap-8">
+                    <div class="flex -space-x-3">
+                        <img class="w-10 h-10 rounded-full border-2 border-slate-900" src="assets/t4" alt="user">
+                        <img class="w-10 h-10 rounded-full border-2 border-slate-900" src="assets/t5" alt="user">
+                        <img class="w-10 h-10 rounded-full border-2 border-slate-900" src="assets/t7" alt="user">
+                        <div class="w-10 h-10 rounded-full border-2 border-slate-900 bg-slate-800 flex items-center justify-center text-[10px] font-bold text-white">+2k</div>
+                    </div>
+                    <p class="text-slate-500 text-sm font-medium">Developers joined in the last 24 hours</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+    <footer class="bg-white dark:bg-slate-900 pt-20 pb-10 border-t border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-1 md:col-span-1">
+                    <a href="index.html">
+                          <div class="flex items-center gap-2 mb-6">
+                        <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white"><i class="fas fa-code"></i></div>
+                <span class="font-bold text-xl tracking-tight">DEV<span class="text-primary">BASE</span></span>
+                    </div>
+                    </a>
+                  
+                    <p class="text-slate-500 text-sm leading-relaxed">
+                        The ultimate platform for collaborative software development and enterprise-grade open source tools.
+                    </p>
+                    <div class="flex gap-4 mt-6">
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all"><i class="fab fa-github"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6 uppercase text-xs tracking-widest">Quick Links</h4>
+                    <ul class="space-y-4 text-slate-500">
+                        <li><a href="index.html" class="hover:text-primary">Home 1</a></li>
+                        <li><a href="home2.html" class="hover:text-primary">Home 2</a></li>
+                        <li><a href="aboutus.html" class="hover:text-primary">About Us</a></li>
+                        <li><a href="service.html" class="hover:text-primary">Services</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6 uppercase text-xs tracking-widest">Resources</h4>
+                    <ul class="space-y-4 text-slate-500">
+                        <li><a href="pricing.html" class="hover:text-primary">Pricing</a></li>
+                        <li><a href="contact.html" class="hover:text-primary">Contact</a></li>
+                        <li><a href="comingsoon.html" class="hover:text-primary">ComingSoon</a></li>
+                        <li><a href="404.html" class="hover:text-primary">404</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6 uppercase text-xs tracking-widest">Contact Info</h4>
+                    <ul class="space-y-4 text-slate-500">
+                        <li class="flex items-center gap-3"><i class="fas fa-envelope text-primary"></i> hello@devbase.com</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-map-marker-alt text-primary"></i> Bangalore, India</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center pt-10 border-t border-slate-100 dark:border-slate-800 text-slate-400 text-sm">
+                &copy; 2026 DEV BASE. All rights reserved. Built with ❤️ for the community.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle Logic
+        function toggleTheme() {
+            const html = document.documentElement;
+            const icon = document.getElementById('theme-icon');
+            const iconMobile = document.getElementById('theme-icon-mobile');
+            
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                icon.className = 'fas fa-moon';
+                iconMobile.className = 'fas fa-moon';
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                icon.className = 'fas fa-sun';
+                iconMobile.className = 'fas fa-sun';
+            }
+        }
+
+        // Initialize Theme from Local Storage
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            document.getElementById('theme-icon').className = 'fas fa-sun';
+        }
+
+       
+        function toggleMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const icon = document.getElementById('menu-toggle-icon');
+    
+    // Toggle the visibility
+    menu.classList.toggle('hidden');
+    
+    // Switch between bars and X icon
+    if (menu.classList.contains('hidden')) {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+    } else {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+    }
+}
+
+// Close menu automatically if screen is resized to desktop
+window.addEventListener('resize', () => {
+    if (window.innerWidth >= 1024) {
+        document.getElementById('mobile-menu').classList.add('hidden');
+        document.getElementById('menu-toggle-icon').classList.replace('fa-times', 'fa-bars');
+    }
+});
+// Function to toggle direction and save to local storage
+function toggleDir() {
+    const html = document.documentElement;
+    const newDir = html.dir === 'ltr' ? 'rtl' : 'ltr';
+    
+    // Apply the direction
+    html.dir = newDir;
+    
+    // Save to local storage
+    localStorage.setItem('site-direction', newDir);
+    
+    // Optional: Log it for debugging
+    console.log(`Direction changed to: ${newDir}`);
+}
+
+// Initialization: Run this as soon as the DOM is ready
+(function() {
+    const savedDir = localStorage.getItem('site-direction');
+    if (savedDir) {
+        document.documentElement.dir = savedDir;
+    } else {
+        // Default to LTR if nothing is saved
+        document.documentElement.dir = 'ltr';
+    }
+})();
+
+        // LTR / RTL Toggle
+        // function toggleDir() {
+        //     const html = document.documentElement;
+        //     html.dir = html.dir === 'ltr' ? 'rtl' : 'ltr';
+        // }
+    </script>
+</body>
+</html>

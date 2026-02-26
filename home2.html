@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/code (2).png">
+    <title>Dev Base | Open Source</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .transition-all { transition: all 0.3s ease; }
+    </style>
+</head>
+<body class="bg-white text-slate-900 dark:bg-slate-900 dark:text-white transition-all">
+<nav class="fixed w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16 items-center">
+            <a href="index.html" class="flex-shrink-0 flex items-center gap-2">
+                <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white">
+                    <i class="fas fa-code"></i>
+                </div>
+                <span class="font-bold text-xl tracking-tight">DEV<span class="text-primary">BASE</span></span>
+            </a>
+
+            <div class="hidden lg:flex space-x-8 items-center">
+                <a href="index.html" class="nav-link hover:text-primary transition-colors">Home 1</a>
+                <a href="home2.html" class="nav-link hover:text-primary transition-colors">Home 2</a>
+                <a href="aboutus.html" class="nav-link hover:text-primary transition-colors">About</a>
+                <a href="documentation.html" class="nav-link hover:text-primary transition-colors">Documentation</a>
+                <a href="service.html" class="nav-link hover:text-primary transition-colors">Services</a>
+                <a href="pricing.html" class="nav-link hover:text-primary transition-colors">Pricing</a>
+                <a href="contact.html" class="nav-link hover:text-primary transition-colors">Contact</a>
+            </div>
+
+            <div class="lg:hidden flex items-center gap-2">
+                <button onclick="toggleTheme()" class="p-2 rounded-full"><i id="theme-icon-mobile" class="fas fa-moon"></i></button>
+                <button onclick="toggleMenu()" class="text-2xl p-2 text-slate-600 dark:text-slate-300">
+                    <i id="menu-toggle-icon" class="fas fa-bars"></i>
+                </button>
+            </div>
+            
+            <div class="hidden lg:flex items-center gap-4">
+                <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800">
+                    <i id="theme-icon" class="fas fa-moon"></i>
+                
+                <button onclick="toggleDir()" class="text-xs font-bold border px-2 py-1 rounded hover:border-primary transition-all">
+    LTR / RTL
+</button></button>
+                <!-- <button onclick="toggleDir()" class="text-xs font-bold border px-2 py-1 rounded hover:border-primary">LTR/RTL</button> -->
+                <a href="login.html">
+                    <button class="bg-primary text-white px-5 py-2 rounded-full font-medium hover:opacity-90 transition-all">Register</button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden lg:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-6 py-8 shadow-xl">
+        <div class="flex flex-col space-y-2">
+            <a href="index.html" class="nav-link block py-3 text-lg font-medium border-b border-slate-100 dark:border-slate-800 last:border-0 hover:text-primary">Home 1</a>
+            <a href="home2.html" class="nav-link block py-3 text-lg font-medium border-b border-slate-100 dark:border-slate-800 last:border-0 hover:text-primary">Home 2</a>
+            <a href="aboutus.html" class="nav-link block py-3 text-lg font-medium border-b border-slate-100 dark:border-slate-800 last:border-0 hover:text-primary">About</a>
+            <a href="documentation.html" class="nav-link block py-3 text-lg font-medium border-b border-slate-100 dark:border-slate-800 last:border-0 hover:text-primary">Documentation</a>
+            <a href="service.html" class="nav-link block py-3 text-lg font-medium border-b border-slate-100 dark:border-slate-800 last:border-0 hover:text-primary">Services</a>
+            <a href="pricing.html" class="nav-link block py-3 text-lg font-medium border-b border-slate-100 dark:border-slate-800 last:border-0 hover:text-primary">Pricing</a>
+            <a href="contact.html" class="nav-link block py-3 text-lg font-medium border-b border-slate-100 dark:border-slate-800 last:border-0 hover:text-primary">Contact</a>
+        </div>
+        
+        <div class="mt-8 space-y-4">
+            <a href="login.html" class="block">
+                <button class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg">Register Now</button>
+            </a>
+           <button onclick="toggleDir()" class="text-xs font-bold border px-2 py-1 rounded hover:border-primary transition-all">
+    LTR / RTL
+</button>
+            <!-- <button onclick="toggleDir()" class="w-full border border-slate-300 dark:border-slate-700 py-3 rounded-xl font-medium">Switch LTR/RTL</button> -->
+        </div>
+    </div>
+</nav>
+   
+
+<style>
+    /* Base Transition for all links */
+.nav-link {
+    transition: all 0.2s ease-in-out;
+}
+
+/* Global Active Class */
+.nav-link-active {
+    color: #3b82f6 !important; /* Tailwind Primary Blue */
+    font-weight: 700;
+}
+
+/* Desktop Specific (Large screens) */
+@media (min-width: 1024px) {
+    .nav-link-active {
+        position: relative;
+    }
+    .nav-link-active::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: #3b82f6;
+        border-radius: 99px;
+    }
+}
+
+/* Mobile & Tablet Specific (Below 1024px) */
+@media (max-width: 1023px) {
+    .nav-link-active {
+        background-color: rgba(59, 130, 246, 0.05); /* Very light blue tint */
+        padding-left: 12px; /* Slight indent to show it's active */
+        border-left: 4px solid #3b82f6;
+    }
+}
+</style>
+<script>
+    // Function to handle Active State
+function handleActiveNav() {
+    const currentPath = window.location.pathname;
+    const links = document.querySelectorAll('.nav-link');
+
+    links.forEach(link => {
+        const linkPath = link.getAttribute('href');
+        
+        // Matches if current path ends with the link path (e.g., /aboutus.html)
+        // Also handles the root "/" matching "index.html"
+        if (currentPath.endsWith(linkPath) || (currentPath === '/' && linkPath === '/index.html')) {
+            link.classList.add('nav-link-active');
+        } else {
+            link.classList.remove('nav-link-active');
+        }
+    });
+}
+
+// Function to toggle Mobile/Tablet Menu
+function toggleMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const icon = document.getElementById('menu-toggle-icon');
+    
+    const isHidden = menu.classList.toggle('hidden');
+    
+    if (isHidden) {
+        icon.classList.replace('fa-times', 'fa-bars');
+    } else {
+        icon.classList.replace('fa-bars', 'fa-times');
+    }
+}
+
+// Run on page load
+window.addEventListener('DOMContentLoaded', handleActiveNav);
+</script>
+<section id="hero" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white dark:bg-slate-950 transition-colors duration-500">
+    
+    <div class="absolute top-0 right-0 w-1/2 h-full bg-primary/5 -skew-x-12 transform origin-top-right -z-10 hidden lg:block"></div>
+    <div class="absolute -top-24 -left-24 w-96 h-96 bg-primary/10 blur-[100px] rounded-full -z-10"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            
+            <div class="reveal-up text-center lg:text-left">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20 mb-8">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                    </span>
+                    <span class="text-[10px] font-black uppercase tracking-[0.2em]">v2.4.0 is now live</span>
+                </div>
+
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-[0.95] tracking-tighter text-slate-900 dark:text-white">
+                    Promote. Build. <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-400 to-cyan-400">Grow.</span>
+                </h1>
+                
+                <p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 mb-10 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                    Discover how our open-source project helps developers and businesses create faster and smarter solutions with reliable, community-driven technology.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                   <a href="login.html">
+                     <button class="w-full sm:w-auto px-10 py-5 bg-primary text-white font-black rounded-2xl shadow-xl shadow-primary/30 hover:-translate-y-1 active:scale-95 transition-all">
+                        Get Started
+                    </button>
+                   </a>
+                   
+                    <button class="w-full sm:w-auto px-10 py-5 border-2 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 font-bold rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-all flex items-center justify-center gap-2 group">
+                        <i class="fas fa-play-circle text-primary transition-transform group-hover:scale-110"></i> View Demo
+                    </button>
+                </div>
+
+                <div class="mt-12 flex flex-wrap justify-center lg:justify-start items-center gap-8 opacity-40 grayscale hover:grayscale-0 transition-all duration-500">
+                    <i class="fab fa-github text-3xl"></i>
+                    <i class="fab fa-npm text-4xl"></i>
+                    <i class="fab fa-docker text-3xl"></i>
+                    <i class="fab fa-aws text-3xl"></i>
+                </div>
+            </div>
+
+            <div class="reveal-up delay-200 relative">
+                <div class="relative z-10 p-4 bg-slate-900 rounded-[2.5rem] border border-white/5 shadow-2xl overflow-hidden group">
+                    <div class="bg-slate-950 rounded-[1.8rem] h-[350px] md:h-[450px] p-8 relative overflow-hidden font-mono text-sm md:text-base">
+                        <div class="flex gap-2 mb-6">
+                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        </div>
+                        
+                        <div class="space-y-3">
+                            <div class="flex gap-3">
+                                <span class="text-primary">$</span>
+                                <span class="text-slate-300">npm install @devbase/core</span>
+                            </div>
+                            <div class="text-slate-500">...fetching manifest</div>
+                            <div class="text-green-500">✔ Success: Engine initialized</div>
+                            <div class="flex gap-3 pt-4">
+                                <span class="text-primary">$</span>
+                                <span class="text-slate-300">devbase up --production</span>
+                            </div>
+                            <div class="text-slate-400 animate-pulse">Running cluster locally at port 3000...</div>
+                        </div>
+
+                        <div class="absolute bottom-10 right-10 p-5 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl animate-float">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white">
+                                    <i class="fas fa-check"></i>
+                                </div>
+                                <div class="space-y-1">
+                                    <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Latency</div>
+                                    <div class="text-xl font-black text-white">12ms</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="absolute -top-10 -right-10 w-full h-full bg-primary/20 blur-[120px] rounded-full -z-10 animate-pulse"></div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<style>
+    @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-20px); }
+    }
+    .animate-float { animation: float 6s ease-in-out infinite; }
+</style>
+<section id="benefits" class="py-24 bg-slate-50 dark:bg-slate-900 transition-colors duration-500 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="max-w-3xl mb-16 reveal-up">
+            <h2 class="text-3xl md:text-5xl font-black text-slate-900 dark:text-white mb-6">
+                Engineered for the <br><span class="text-primary">Modern Developer.</span>
+            </h2>
+            <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+                DEV BASE isn't just a tool; it's a global ecosystem built to eliminate friction and spark innovation.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            <div class="reveal-up group p-8 rounded-[2.5rem] bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-primary hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500">
+                <div class="w-14 h-14 bg-primary/10 text-primary rounded-2xl flex items-center justify-center mb-8 group-hover:bg-primary group-hover:text-white group-hover:rotate-[15deg] transition-all">
+                    <i class="fas fa-code-branch text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-4 dark:text-white">Open-Source Innovation</h3>
+                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+                    Access transparent, peer-reviewed code. Modify, improve, and deploy with complete freedom.
+                </p>
+            </div>
+
+            <div class="reveal-up delay-100 group p-8 rounded-[2.5rem] bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-purple-500 hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-500">
+                <div class="w-14 h-14 bg-purple-500/10 text-purple-500 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-purple-500 group-hover:text-white group-hover:rotate-[15deg] transition-all">
+                    <i class="fas fa-users text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-4 dark:text-white">Community Powered</h3>
+                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+                    Supported by 10k+ contributors worldwide, ensuring rapid bug fixes and feature growth.
+                </p>
+            </div>
+
+            <div class="reveal-up delay-200 group p-8 rounded-[2.5rem] bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-green-500 hover:shadow-2xl hover:shadow-green-500/10 transition-all duration-500">
+                <div class="w-14 h-14 bg-green-500/10 text-green-500 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-green-500 group-hover:text-white group-hover:rotate-[15deg] transition-all">
+                    <i class="fas fa-plug text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-4 dark:text-white">Easy Integration</h3>
+                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+                    One-click installs and universal API support to fit seamlessly into your existing stack.
+                </p>
+            </div>
+
+            <div class="reveal-up delay-300 group p-8 rounded-[2.5rem] bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-blue-400 hover:shadow-2xl hover:shadow-blue-400/10 transition-all duration-500">
+                <div class="w-14 h-14 bg-blue-400/10 text-blue-400 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-blue-400 group-hover:text-white group-hover:rotate-[15deg] transition-all">
+                    <i class="fas fa-chart-line text-2xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-4 dark:text-white">Scalable Solutions</h3>
+                <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+                    Designed to grow from a side project to an enterprise-grade application without friction.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section id="marketing-highlights" class="py-24 bg-white dark:bg-slate-950 transition-colors duration-500 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center mb-16 reveal-up">
+            <h2 class="text-3xl md:text-5xl font-black text-slate-900 dark:text-white mb-6">
+                Spreading the <span class="text-primary">Innovation.</span>
+            </h2>
+            <p class="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">
+                Our growth is fueled by transparency and education. Here is how we engage with the global developer community.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <div class="md:col-span-2 reveal-up p-8 md:p-12 rounded-[3rem] bg-slate-900 text-white relative overflow-hidden group">
+                <div class="relative z-10">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 mb-6">
+                        <i class="fas fa-pen-nib text-xs"></i>
+                        <span class="text-[10px] font-black uppercase tracking-widest">Thought Leadership</span>
+                    </div>
+                    <h3 class="text-2xl md:text-4xl font-black mb-4">Content & Developer Blogs</h3>
+                    <p class="text-slate-400 text-sm md:text-base max-w-md leading-relaxed">
+                        We publish deep-dive technical articles on Medium and Dev.to, focusing on architecture, open-source trends, and performance optimization.
+                    </p>
+                    <div class="mt-8 flex gap-4">
+                        <div class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-xs font-mono">15k+ Monthly Reads</div>
+                        <div class="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-xs font-mono">50+ Authors</div>
+                    </div>
+                </div>
+                <i class="fas fa-code absolute -bottom-10 -right-10 text-[200px] opacity-10 group-hover:rotate-12 transition-transform duration-700"></i>
+            </div>
+
+            <div class="reveal-up delay-100 p-8 rounded-[3rem] bg-blue-500 text-white flex flex-col justify-between hover:scale-[1.02] transition-transform shadow-xl shadow-blue-500/20">
+                <div class="flex justify-between items-start">
+                    <i class="fab fa-twitter text-3xl"></i>
+                    <span class="text-[10px] font-bold bg-white/20 px-2 py-1 rounded-lg">LIVE UPDATES</span>
+                </div>
+                <div>
+                    <h4 class="font-black text-xl mb-2">Social Pulse</h4>
+                    <p class="text-xs opacity-90">Daily updates, community shoutouts, and feature teasers.</p>
+                </div>
+            </div>
+
+            <div class="reveal-up delay-200 p-8 rounded-[3rem] bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex flex-col justify-between group">
+                <div class="w-12 h-12 bg-red-500/10 text-red-500 rounded-2xl flex items-center justify-center group-hover:bg-red-500 group-hover:text-white transition-all">
+                    <i class="fas fa-video"></i>
+                </div>
+                <div class="mt-8">
+                    <h4 class="font-black text-xl mb-2 dark:text-white">Learn in Public</h4>
+                    <p class="text-xs text-slate-500">Weekly webinars and interactive YouTube tutorials.</p>
+                </div>
+            </div>
+
+            <div class="md:col-span-2 reveal-up delay-300 p-8 md:p-10 rounded-[3rem] bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-800 flex flex-col md:flex-row items-center gap-8 group">
+                <div class="w-24 h-24 bg-green-500/10 text-green-500 rounded-full flex items-center justify-center text-4xl shrink-0 group-hover:animate-pulse">
+                    <i class="fas fa-bullhorn"></i>
+                </div>
+                <div>
+                    <h4 class="font-black text-2xl mb-3 dark:text-white">Community Campaigns</h4>
+                    <p class="text-sm text-slate-500 leading-relaxed">
+                        From Hacktoberfest to local meetups, we empower our users to lead the conversation and drive adoption through grassroots movements.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section id="benefits-community" class="py-24 bg-slate-50 dark:bg-slate-900 transition-colors duration-500 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center mb-20 reveal-up">
+            <h2 class="text-3xl md:text-5xl font-black text-slate-900 dark:text-white mb-6">
+                Impact Through <span class="text-primary">Unity.</span>
+            </h2>
+            <p class="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto text-lg">
+                We don't just build software; we cultivate a global movement. Explore the advantages of joining the DEV BASE ecosystem.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+            
+            <div class="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-4">
+                
+                <div class="reveal-up p-8 rounded-[2rem] bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-primary transition-all group">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="w-12 h-12 bg-primary/10 text-primary rounded-xl flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <span class="text-[10px] font-bold text-slate-400">BENEFIT 01</span>
+                    </div>
+                    <h4 class="font-bold dark:text-white text-lg mb-2">Adoption & Visibility</h4>
+                    <p class="text-xs text-slate-500 leading-relaxed">Increase developer adoption with faster visibility in our global marketplace.</p>
+                </div>
+
+                <div class="reveal-up delay-100 p-8 rounded-[2rem] bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-green-500 transition-all group">
+                    <div class="flex justify-between items-start mb-6">
+                        <div class="w-12 h-12 bg-green-500/10 text-green-500 rounded-xl flex items-center justify-center group-hover:bg-green-500 group-hover:text-white transition-all">
+                            <i class="fas fa-sync"></i>
+                        </div>
+                        <span class="text-[10px] font-bold text-slate-400">BENEFIT 02</span>
+                    </div>
+                    <h4 class="font-bold dark:text-white text-lg mb-2">Agile Evolution</h4>
+                    <p class="text-xs text-slate-500 leading-relaxed">Benefit from continuous improvements driven by peer-reviewed security and performance updates.</p>
+                </div>
+
+                <div class="reveal-up md:col-span-2 p-8 rounded-[2rem] bg-slate-900 text-white relative overflow-hidden group">
+                    <div class="relative z-10 flex flex-col md:flex-row md:items-center gap-8">
+                        <div class="w-20 h-20 bg-white/10 rounded-full flex items-center justify-center text-3xl shrink-0 group-hover:rotate-12 transition-transform">
+                            <i class="fas fa-globe-americas text-primary"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-xl mb-2">Global Community Reach</h4>
+                            <p class="text-sm text-slate-400 leading-relaxed">Your code travels further. Leverage our network to reach developers in 150+ countries instantly.</p>
+                        </div>
+                    </div>
+                    <i class="fas fa-map absolute -bottom-10 -right-10 text-[180px] opacity-5 pointer-events-none"></i>
+                </div>
+            </div>
+
+            <div class="lg:col-span-5 p-8 md:p-12 rounded-[3rem] bg-primary text-white flex flex-col justify-between reveal-up delay-200 shadow-2xl shadow-primary/20">
+                <div>
+                    <h3 class="text-2xl font-black mb-8 flex items-center gap-3">
+                        <i class="fas fa-users"></i> Community Growth
+                    </h3>
+                    
+                    <div class="space-y-8">
+                        <div class="flex items-center gap-6 group">
+                            <div class="text-4xl font-black opacity-20 group-hover:opacity-100 transition-opacity">01</div>
+                            <div>
+                                <h5 class="font-bold text-lg">Global Contributors</h5>
+                                <p class="text-xs text-blue-100">5,000+ developers actively contributing code daily.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-6 group">
+                            <div class="text-4xl font-black opacity-20 group-hover:opacity-100 transition-opacity">02</div>
+                            <div>
+                                <h5 class="font-bold text-lg">Active Discussions</h5>
+                                <p class="text-xs text-blue-100">100k+ monthly messages on our Discord and GitHub.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-6 group">
+                            <div class="text-4xl font-black opacity-20 group-hover:opacity-100 transition-opacity">03</div>
+                            <div>
+                                <h5 class="font-bold text-lg">Events & Meetups</h5>
+                                <p class="text-xs text-blue-100">Annual Hackathons and bi-monthly local city workshops.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="mt-12 w-full py-5 bg-white text-primary font-black rounded-2xl hover:bg-blue-50 hover:-translate-y-1 active:scale-95 transition-all shadow-xl">
+                    Start Collaborating Now
+                </button>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section id="testimonials" class="py-24 bg-white dark:bg-slate-950 transition-colors duration-500 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center mb-20 reveal-up">
+            <h2 class="text-3xl md:text-5xl font-black text-slate-900 dark:text-white mb-6">
+                Loved by <span class="text-primary">Builders.</span>
+            </h2>
+            <p class="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto text-lg">
+                Don't just take our word for it. Here’s what the open-source community is saying about DEV BASE.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <div class="reveal-up p-8 rounded-[2.5rem] bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 group">
+                <div class="flex items-center gap-4 mb-8">
+                    <img src="assets/t6" alt="Sarah Chen" class="w-14 h-14 rounded-2xl object-cover border-2 border-white dark:border-slate-700 shadow-lg group-hover:border-primary transition-colors">
+                    <div>
+                        <h4 class="font-bold dark:text-white">Sarah Chen</h4>
+                        <p class="text-[10px] font-bold text-primary uppercase tracking-widest">Senior Architect</p>
+                    </div>
+                </div>
+                <div class="relative">
+                    <i class="fas fa-quote-left absolute -top-4 -left-2 text-4xl text-primary/10"></i>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed relative z-10 italic">
+                        "The transparency of DEV BASE is its greatest strength. We migrated our entire microservice layer in days, not months. It's a game-changer for team velocity."
+                    </p>
+                </div>
+            </div>
+
+            <div class="reveal-up delay-100 p-8 rounded-[2.5rem] bg-primary text-white shadow-2xl shadow-primary/20 hover:-translate-y-2 transition-all duration-500 relative overflow-hidden group">
+                <div class="absolute top-0 right-0 p-8 opacity-10 text-6xl group-hover:rotate-12 transition-transform">
+                    <i class="fas fa-terminal"></i>
+                </div>
+                <div class="flex items-center gap-4 mb-8">
+                    <img src="assets/t4" alt="Marcus Vogt" class="w-14 h-14 rounded-2xl object-cover border-2 border-white/20 shadow-lg">
+                    <div>
+                        <h4 class="font-bold">Marcus Vogt</h4>
+                        <p class="text-[10px] font-bold text-blue-200 uppercase tracking-widest">Fullstack Developer</p>
+                    </div>
+                </div>
+                <p class="leading-relaxed italic relative z-10">
+                    "Finally, an open-source project that prioritizes Developer Experience (DX). The CLI is intuitive, and the community support on Discord is incredibly fast."
+                </p>
+            </div>
+
+            <div class="reveal-up delay-200 p-8 rounded-[2.5rem] bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 group">
+                <div class="flex items-center gap-4 mb-8">
+                    <img src="assets/t2" alt="Elena Rodriguez" class="w-14 h-14 rounded-2xl object-cover border-2 border-white dark:border-slate-700 shadow-lg group-hover:border-primary transition-colors">
+                    <div>
+                        <h4 class="font-bold dark:text-white">Elena Rodriguez</h4>
+                        <p class="text-[10px] font-bold text-primary uppercase tracking-widest">OSS Contributor</p>
+                    </div>
+                </div>
+                <div class="relative">
+                    <i class="fas fa-quote-left absolute -top-4 -left-2 text-4xl text-primary/10"></i>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed relative z-10 italic">
+                        "Contributing to DEV BASE has been a highlight of my year. The codebase is clean, and the maintainers actually listen to community feedback."
+                    </p>
+                </div>
+            </div>
+                     <div class="testimonial-card reveal-up delay-200 group relative p-8 rounded-3xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 hover:border-primary transition-all duration-500 shadow-xl">
+                <div class="flex items-center gap-1 text-orange-400 mb-6">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                </div>
+                <p class="text-slate-600 dark:text-slate-300 italic mb-8 leading-relaxed">
+                    "The CLI tools are incredibly intuitive. We went from 'Hello World' to a production-ready API in under an hour."
+                </p>
+                <div class="flex items-center gap-4">
+                    <img src="assets/t1" alt="User" class="w-12 h-12 rounded-full border-2 border-primary ring-4 ring-primary/10">
+                    <div>
+                        <h4 class="font-bold dark:text-white">Marcus Chen</h4>
+                        <p class="text-xs text-slate-500">Founder @ DevFlow</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card reveal-up delay-300 group relative p-8 rounded-3xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 hover:border-primary transition-all duration-500 shadow-xl">
+    <div class="flex items-center gap-1 text-orange-400 mb-6">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+    </div>
+    <p class="text-slate-600 dark:text-slate-300 italic mb-8 leading-relaxed">
+        "Security was our main concern, but the transparent, peer-reviewed nature of this project made the internal audit a breeze. Truly enterprise-grade."
+    </p>
+    <div class="flex items-center gap-4">
+        <img src="assets/t6" alt="User" class="w-12 h-12 rounded-full border-2 border-primary ring-4 ring-primary/10">
+        <div>
+            <h4 class="font-bold dark:text-white">Sarah Jenkins</h4>
+            <p class="text-xs text-slate-500">CTO @ SecureStack</p>
+        </div>
+    </div>
+</div>
+<div class="testimonial-card reveal-up delay-400 group relative p-8 rounded-3xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 hover:border-primary transition-all duration-500 shadow-xl">
+    <div class="flex items-center gap-1 text-orange-400 mb-6">
+        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+    </div>
+    <p class="text-slate-600 dark:text-slate-300 italic mb-8 leading-relaxed">
+        "The documentation is so clean it almost reads like a story. I’ve never seen a community so welcoming to new open-source contributors."
+    </p>
+    <div class="flex items-center gap-4">
+        <img src="assets/t5" alt="User" class="w-12 h-12 rounded-full border-2 border-primary ring-4 ring-primary/10">
+        <div>
+            <h4 class="font-bold dark:text-white">Liam O’Connor</h4>
+            <p class="text-xs text-slate-500">Fullstack Engineer</p>
+        </div>
+    </div>
+</div>
+
+        </div>
+
+        <div class="mt-20 py-10 border-t border-slate-100 dark:border-slate-800 flex flex-wrap justify-center items-center gap-12 opacity-50 grayscale hover:grayscale-0 transition-all duration-700">
+            <span class="font-black text-2xl text-slate-400">GITHUB</span>
+            <span class="font-black text-2xl text-slate-400">PRODUCT HUNT</span>
+            <span class="font-black text-2xl text-slate-400">HACKER NEWS</span>
+            <span class="font-black text-2xl text-slate-400">DEV.TO</span>
+        </div>
+    </div>
+</section>
+<section id="cta-light" class="py-24 bg-white dark:bg-slate-950 transition-colors duration-500 overflow-hidden relative">
+    
+    <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-200 dark:via-slate-800 to-transparent"></div>
+    <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-primary/5 blur-[100px] rounded-full -z-10"></div>
+
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="text-center reveal-up">
+            
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 mb-10 group cursor-default">
+                <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                <span class="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400 group-hover:text-primary transition-colors">Start Building Today</span>
+            </div>
+
+            <h2 class="text-4xl md:text-6xl font-black text-slate-900 dark:text-white mb-8 leading-[1.1] tracking-tighter">
+                Ready to transform your <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-600">development workflow?</span>
+            </h2>
+            
+            <p class="text-slate-500 dark:text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed">
+                Join thousands of developers leveraging our open-source engine to build faster, more secure, and infinitely scalable applications.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="login.html" class="w-full sm:w-auto px-12 py-5 bg-primary text-white font-black rounded-[1.5rem] shadow-2xl shadow-primary/30 hover:-translate-y-1 active:scale-95 transition-all text-center">
+                    Create Free Account
+                </a>
+                <a href="comingsoon.html" class="w-full sm:w-auto px-12 py-5 bg-white dark:bg-slate-900 border-2 border-slate-100 dark:border-slate-800 text-slate-700 dark:text-slate-300 font-bold rounded-[1.5rem] hover:bg-slate-50 dark:hover:bg-slate-800 transition-all text-center flex items-center justify-center gap-2 group">
+                    <i class="fas fa-play text-[10px] text-primary transition-transform group-hover:scale-125"></i> View Demo
+                </a>
+            </div>
+
+            <div class="mt-16 flex flex-col items-center gap-6">
+                <div class="flex -space-x-3">
+                    <img class="w-10 h-10 rounded-full border-4 border-white dark:border-slate-950 bg-slate-100" src="assets/t1" alt="dev">
+                    <img class="w-10 h-10 rounded-full border-4 border-white dark:border-slate-950 bg-slate-100" src="assets/t2" alt="dev">
+                    <img class="w-10 h-10 rounded-full border-4 border-white dark:border-slate-950 bg-slate-100" src="assets/t3" alt="dev">
+                </div>
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">
+                    Used by developers at <span class="text-slate-900 dark:text-white">1,200+ companies</span>
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+   <footer class="bg-white dark:bg-slate-900 pt-20 pb-10 border-t border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-1 md:col-span-1">
+                    <a href="index.html">
+                          <div class="flex items-center gap-2 mb-6">
+                        <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white"><i class="fas fa-code"></i></div>
+                <span class="font-bold text-xl tracking-tight">DEV<span class="text-primary">BASE</span></span>
+                    </div>
+                    </a>
+                  
+                    <p class="text-slate-500 text-sm leading-relaxed">
+                        The ultimate platform for collaborative software development and enterprise-grade open source tools.
+                    </p>
+                    <div class="flex gap-4 mt-6">
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all"><i class="fab fa-github"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6 uppercase text-xs tracking-widest">Quick Links</h4>
+                    <ul class="space-y-4 text-slate-500">
+                        <li><a href="index.html" class="hover:text-primary">Home 1</a></li>
+                        <li><a href="home2.html" class="hover:text-primary">Home 2</a></li>
+                        <li><a href="aboutus.html" class="hover:text-primary">About Us</a></li>
+                        <li><a href="service.html" class="hover:text-primary">Services</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6 uppercase text-xs tracking-widest">Resources</h4>
+                    <ul class="space-y-4 text-slate-500">
+                        <li><a href="pricing.html" class="hover:text-primary">Pricing</a></li>
+                        <li><a href="contact.html" class="hover:text-primary">Contact</a></li>
+                        <li><a href="comingsoon.html" class="hover:text-primary">ComingSoon</a></li>
+                        <li><a href="404.html" class="hover:text-primary">404</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6 uppercase text-xs tracking-widest">Contact Info</h4>
+                    <ul class="space-y-4 text-slate-500">
+                        <li class="flex items-center gap-3"><i class="fas fa-envelope text-primary"></i> hello@devbase.com</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-map-marker-alt text-primary"></i> Bangalore, India</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center pt-10 border-t border-slate-100 dark:border-slate-800 text-slate-400 text-sm">
+                &copy; 2026 DEV BASE. All rights reserved. Built with ❤️ for the community.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle Logic
+        function toggleTheme() {
+            const html = document.documentElement;
+            const icon = document.getElementById('theme-icon');
+            const iconMobile = document.getElementById('theme-icon-mobile');
+            
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                icon.className = 'fas fa-moon';
+                iconMobile.className = 'fas fa-moon';
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                icon.className = 'fas fa-sun';
+                iconMobile.className = 'fas fa-sun';
+            }
+        }
+
+        // Initialize Theme from Local Storage
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            document.getElementById('theme-icon').className = 'fas fa-sun';
+        }
+
+       
+        function toggleMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const icon = document.getElementById('menu-toggle-icon');
+    
+    // Toggle the visibility
+    menu.classList.toggle('hidden');
+    
+    // Switch between bars and X icon
+    if (menu.classList.contains('hidden')) {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+    } else {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+    }
+}
+
+// Close menu automatically if screen is resized to desktop
+window.addEventListener('resize', () => {
+    if (window.innerWidth >= 1024) {
+        document.getElementById('mobile-menu').classList.add('hidden');
+        document.getElementById('menu-toggle-icon').classList.replace('fa-times', 'fa-bars');
+    }
+});
+// Function to toggle direction and save to local storage
+function toggleDir() {
+    const html = document.documentElement;
+    const newDir = html.dir === 'ltr' ? 'rtl' : 'ltr';
+    
+    // Apply the direction
+    html.dir = newDir;
+    
+    // Save to local storage
+    localStorage.setItem('site-direction', newDir);
+    
+    // Optional: Log it for debugging
+    console.log(`Direction changed to: ${newDir}`);
+}
+
+// Initialization: Run this as soon as the DOM is ready
+(function() {
+    const savedDir = localStorage.getItem('site-direction');
+    if (savedDir) {
+        document.documentElement.dir = savedDir;
+    } else {
+        // Default to LTR if nothing is saved
+        document.documentElement.dir = 'ltr';
+    }
+})();
+
+        // LTR / RTL Toggle
+        // function toggleDir() {
+        //     const html = document.documentElement;
+        //     html.dir = html.dir === 'ltr' ? 'rtl' : 'ltr';
+        // }
+    </script>
+</body>
+</html>

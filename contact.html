@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/code (2).png">
+    <title>Dev Base | Open Source</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .transition-all { transition: all 0.3s ease; }
+    </style>
+</head>
+<body class="bg-white text-slate-900 dark:bg-slate-900 dark:text-white transition-all">
+<nav class="fixed w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16 items-center">
+            <a href="index.html" class="flex-shrink-0 flex items-center gap-2">
+                <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white">
+                    <i class="fas fa-code"></i>
+                </div>
+                <span class="font-bold text-xl tracking-tight">DEV<span class="text-primary">BASE</span></span>
+            </a>
+
+            <div class="hidden lg:flex space-x-8 items-center">
+                <a href="index.html" class="nav-link hover:text-primary transition-colors">Home 1</a>
+                <a href="home2.html" class="nav-link hover:text-primary transition-colors">Home 2</a>
+                <a href="aboutus.html" class="nav-link hover:text-primary transition-colors">About</a>
+                <a href="documentation.html" class="nav-link hover:text-primary transition-colors">Documentation</a>
+                <a href="service.html" class="nav-link hover:text-primary transition-colors">Services</a>
+                <a href="pricing.html" class="nav-link hover:text-primary transition-colors">Pricing</a>
+                <a href="contact.html" class="nav-link hover:text-primary transition-colors">Contact</a>
+            </div>
+
+            <div class="lg:hidden flex items-center gap-2">
+                <button onclick="toggleTheme()" class="p-2 rounded-full"><i id="theme-icon-mobile" class="fas fa-moon"></i></button>
+                <button onclick="toggleMenu()" class="text-2xl p-2 text-slate-600 dark:text-slate-300">
+                    <i id="menu-toggle-icon" class="fas fa-bars"></i>
+                </button>
+            </div>
+            
+            <div class="hidden lg:flex items-center gap-4">
+                <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800">
+                    <i id="theme-icon" class="fas fa-moon"></i>
+                </button>
+                <button onclick="toggleDir()" class="text-xs font-bold border px-2 py-1 rounded hover:border-primary transition-all">
+    LTR / RTL
+</button>
+                <!-- <button onclick="toggleDir()" class="text-xs font-bold border px-2 py-1 rounded hover:border-primary">LTR/RTL</button> -->
+                <a href="login.html">
+                    <button class="bg-primary text-white px-5 py-2 rounded-full font-medium hover:opacity-90 transition-all">Register</button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden lg:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-6 py-8 shadow-xl">
+        <div class="flex flex-col space-y-2">
+            <a href="index.html" class="nav-link block py-3 text-lg font-medium border-b border-slate-100 dark:border-slate-800 last:border-0 hover:text-primary">Home 1</a>
+            <a href="home2.html" class="nav-link block py-3 text-lg font-medium border-b border-slate-100 dark:border-slate-800 last:border-0 hover:text-primary">Home 2</a>
+            <a href="aboutus.html" class="nav-link block py-3 text-lg font-medium border-b border-slate-100 dark:border-slate-800 last:border-0 hover:text-primary">About</a>
+            <a href="documentation.html" class="nav-link block py-3 text-lg font-medium border-b border-slate-100 dark:border-slate-800 last:border-0 hover:text-primary">Documentation</a>
+            <a href="service.html" class="nav-link block py-3 text-lg font-medium border-b border-slate-100 dark:border-slate-800 last:border-0 hover:text-primary">Services</a>
+            <a href="pricing.html" class="nav-link block py-3 text-lg font-medium border-b border-slate-100 dark:border-slate-800 last:border-0 hover:text-primary">Pricing</a>
+            <a href="contact.html" class="nav-link block py-3 text-lg font-medium border-b border-slate-100 dark:border-slate-800 last:border-0 hover:text-primary">Contact</a>
+        </div>
+        
+        <div class="mt-8 space-y-4">
+            <a href="login.html" class="block">
+                <button class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg">Register Now</button>
+            </a>
+            <button onclick="toggleDir()" class="text-xs font-bold border px-2 py-1 rounded hover:border-primary transition-all">
+    LTR / RTL
+</button>
+            <!-- <button onclick="toggleDir()" class="w-full border border-slate-300 dark:border-slate-700 py-3 rounded-xl font-medium">Switch LTR/RTL</button> -->
+        </div>
+    </div>
+</nav>
+   
+
+<style>
+    /* Base Transition for all links */
+.nav-link {
+    transition: all 0.2s ease-in-out;
+}
+
+/* Global Active Class */
+.nav-link-active {
+    color: #3b82f6 !important; /* Tailwind Primary Blue */
+    font-weight: 700;
+}
+
+/* Desktop Specific (Large screens) */
+@media (min-width: 1024px) {
+    .nav-link-active {
+        position: relative;
+    }
+    .nav-link-active::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: #3b82f6;
+        border-radius: 99px;
+    }
+}
+
+/* Mobile & Tablet Specific (Below 1024px) */
+@media (max-width: 1023px) {
+    .nav-link-active {
+        background-color: rgba(59, 130, 246, 0.05); /* Very light blue tint */
+        padding-left: 12px; /* Slight indent to show it's active */
+        border-left: 4px solid #3b82f6;
+    }
+}
+</style>
+<script>
+    // Function to handle Active State
+function handleActiveNav() {
+    const currentPath = window.location.pathname;
+    const links = document.querySelectorAll('.nav-link');
+
+    links.forEach(link => {
+        const linkPath = link.getAttribute('href');
+        
+        // Matches if current path ends with the link path (e.g., /aboutus.html)
+        // Also handles the root "/" matching "index.html"
+        if (currentPath.endsWith(linkPath) || (currentPath === '/' && linkPath === '/index.html')) {
+            link.classList.add('nav-link-active');
+        } else {
+            link.classList.remove('nav-link-active');
+        }
+    });
+}
+
+// Function to toggle Mobile/Tablet Menu
+function toggleMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const icon = document.getElementById('menu-toggle-icon');
+    
+    const isHidden = menu.classList.toggle('hidden');
+    
+    if (isHidden) {
+        icon.classList.replace('fa-times', 'fa-bars');
+    } else {
+        icon.classList.replace('fa-bars', 'fa-times');
+    }
+}
+
+// Run on page load
+window.addEventListener('DOMContentLoaded', handleActiveNav);
+</script>
+
+<section id="contact" class="py-24 bg-white dark:bg-slate-900 transition-colors duration-500 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center mb-16 reveal-up">
+            <h2 class="text-3xl md:text-5xl font-black text-slate-900 dark:text-white mb-6">
+                Get in <span class="text-primary">Touch</span>
+            </h2>
+            <p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+                Have questions about Vexa Tech? Whether you're a developer or a business, we're here to help you scale.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            
+            <div class="lg:col-span-5 space-y-6 reveal-up">
+                <div class="group p-6 rounded-3xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 hover:border-primary transition-all duration-300">
+                    <div class="flex items-start gap-5">
+                        <div class="w-12 h-12 bg-primary/10 text-primary rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-white transition-all">
+                            <i class="fas fa-map-marker-alt text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Our Headquarters</h4>
+                            <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                                Dev Base Hub, Tech Park Phase II,<br>Bangalore, Karnataka 560100
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group p-6 rounded-3xl bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 hover:border-primary transition-all duration-300">
+                    <div class="flex items-start gap-5">
+                        <div class="w-12 h-12 bg-blue-500/10 text-blue-500 rounded-2xl flex items-center justify-center shrink-0 group-hover:bg-blue-500 group-hover:text-white transition-all">
+                            <i class="fas fa-envelope text-xl"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-900 dark:text-white mb-1">Email Support</h4>
+                            <p class="text-slate-500 dark:text-slate-400 text-sm">hello@devbase.com</p>
+                            <p class="text-slate-500 dark:text-slate-400 text-sm">support@devbase.com</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="p-8 rounded-3xl bg-primary text-white shadow-xl shadow-primary/20">
+                    <h4 class="font-bold mb-4">Join our community</h4>
+                    <p class="text-white/80 text-sm mb-6">Talk to us directly on Discord or follow our GitHub for real-time updates.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center hover:bg-white hover:text-primary transition-all"><i class="fab fa-discord"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center hover:bg-white hover:text-primary transition-all"><i class="fab fa-github"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center hover:bg-white hover:text-primary transition-all"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-7 reveal-up delay-200">
+                <form id="contactForm" onsubmit="handleFormSubmit(event)" class="bg-white dark:bg-slate-900 p-8 md:p-10 rounded-[2rem] border border-slate-200 dark:border-slate-800 shadow-2xl">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div class="space-y-2">
+                            <label class="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1">Full Name</label>
+                            <input type="text" required placeholder="John Doe" class="w-full px-5 py-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all dark:text-white">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1">Email Address</label>
+                            <input type="email" required placeholder="john@example.com" class="w-full px-5 py-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all dark:text-white">
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-2 mb-6">
+                        <label class="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1">Subject</label>
+                        <select class="w-full px-5 py-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all dark:text-white">
+                            <option>General Inquiry</option>
+                            <option>Technical Support</option>
+                            <option>Partnership</option>
+                            <option>Enterprise Quote</option>
+                        </select>
+                    </div>
+
+                    <div class="space-y-2 mb-8">
+                        <label class="text-sm font-bold text-slate-700 dark:text-slate-300 ml-1">Message</label>
+                        <textarea rows="5" required placeholder="How can we help you?" class="w-full px-5 py-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all dark:text-white resize-none"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-primary text-white py-5 rounded-2xl font-black text-lg shadow-xl shadow-primary/30 hover:-translate-y-1 active:scale-95 transition-all">
+                        Send Message <i class="fas fa-paper-plane ml-2"></i>
+                    </button>
+                    
+                    <p id="formStatus" class="hidden mt-4 text-center font-bold text-green-500 animate-bounce">
+                        <i class="fas fa-check-circle mr-2"></i> Message sent successfully!
+                    </p>
+                </form>
+            </div>
+        </div>
+
+        <div class="mt-20 reveal-up delay-300">
+            <div class="relative w-full h-[400px] rounded-[2.5rem] overflow-hidden border-4 border-white dark:border-slate-800 shadow-2xl group">
+                <iframe 
+                    class="w-full h-full grayscale hover:grayscale-0 transition-all duration-700 opacity-80 dark:opacity-50 dark:invert-[0.9] dark:hue-rotate-[180deg]" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.9261448888!2d77.5945627!3d12.9715987!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1670c9b44e6d%3A0xf8dfc3e8517e4fe0!2sBengaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1676912345678!5m2!1sen!2sin" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+                
+                <div class="absolute inset-0 pointer-events-none flex items-center justify-center">
+                    <div class="bg-white/90 dark:bg-slate-900/90 backdrop-blur-md px-6 py-4 rounded-2xl shadow-2xl border border-white/20 animate-pulse">
+                        <p class="text-xs font-black uppercase tracking-widest text-primary">Live Location</p>
+                        <p class="text-sm font-bold dark:text-white">Vexa Tech HQ</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function handleFormSubmit(e) {
+        e.preventDefault();
+        const btn = e.target.querySelector('button');
+        const status = document.getElementById('formStatus');
+        
+        // Disable button and show loading state
+        btn.innerHTML = '<i class="fas fa-spinner animate-spin"></i> Sending...';
+        btn.disabled = true;
+
+        // Simulate API Call
+        setTimeout(() => {
+            btn.innerHTML = 'Send Message <i class="fas fa-paper-plane ml-2"></i>';
+            btn.disabled = false;
+            status.classList.remove('hidden');
+            e.target.reset();
+            
+            // Hide status after 5 seconds
+            setTimeout(() => status.classList.add('hidden'), 5000);
+        }, 2000);
+    }
+</script>
+
+    <footer class="bg-white dark:bg-slate-900 pt-20 pb-10 border-t border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-1 md:col-span-1">
+                    <a href="index.html">
+                          <div class="flex items-center gap-2 mb-6">
+                        <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white"><i class="fas fa-code"></i></div>
+                <span class="font-bold text-xl tracking-tight">DEV<span class="text-primary">BASE</span></span>
+                    </div>
+                    </a>
+                  
+                    <p class="text-slate-500 text-sm leading-relaxed">
+                        The ultimate platform for collaborative software development and enterprise-grade open source tools.
+                    </p>
+                    <div class="flex gap-4 mt-6">
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all"><i class="fab fa-github"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6 uppercase text-xs tracking-widest">Quick Links</h4>
+                    <ul class="space-y-4 text-slate-500">
+                        <li><a href="index.html" class="hover:text-primary">Home 1</a></li>
+                        <li><a href="home2.html" class="hover:text-primary">Home 2</a></li>
+                        <li><a href="aboutus.html" class="hover:text-primary">About Us</a></li>
+                        <li><a href="service.html" class="hover:text-primary">Services</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6 uppercase text-xs tracking-widest">Resources</h4>
+                    <ul class="space-y-4 text-slate-500">
+                        <li><a href="pricing.html" class="hover:text-primary">Pricing</a></li>
+                        <li><a href="contact.html" class="hover:text-primary">Contact</a></li>
+                        <li><a href="comingsoon.html" class="hover:text-primary">ComingSoon</a></li>
+                        <li><a href="404.html" class="hover:text-primary">404</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6 uppercase text-xs tracking-widest">Contact Info</h4>
+                    <ul class="space-y-4 text-slate-500">
+                        <li class="flex items-center gap-3"><i class="fas fa-envelope text-primary"></i> hello@devbase.com</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-map-marker-alt text-primary"></i> Bangalore, India</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center pt-10 border-t border-slate-100 dark:border-slate-800 text-slate-400 text-sm">
+                &copy; 2026 DEV BASE. All rights reserved. Built with ❤️ for the community.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle Logic
+        function toggleTheme() {
+            const html = document.documentElement;
+            const icon = document.getElementById('theme-icon');
+            const iconMobile = document.getElementById('theme-icon-mobile');
+            
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                icon.className = 'fas fa-moon';
+                iconMobile.className = 'fas fa-moon';
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                icon.className = 'fas fa-sun';
+                iconMobile.className = 'fas fa-sun';
+            }
+        }
+
+        // Initialize Theme from Local Storage
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            document.getElementById('theme-icon').className = 'fas fa-sun';
+        }
+
+        // Mobile Menu Toggle
+        // function toggleMenu() {
+        //     const menu = document.getElementById('mobile-menu');
+        //     menu.classList.toggle('hidden');
+        // }
+        function toggleMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const icon = document.getElementById('menu-toggle-icon');
+    
+    // Toggle the visibility
+    menu.classList.toggle('hidden');
+    
+    // Switch between bars and X icon
+    if (menu.classList.contains('hidden')) {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+    } else {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+    }
+}
+
+// Close menu automatically if screen is resized to desktop
+window.addEventListener('resize', () => {
+    if (window.innerWidth >= 1024) {
+        document.getElementById('mobile-menu').classList.add('hidden');
+        document.getElementById('menu-toggle-icon').classList.replace('fa-times', 'fa-bars');
+    }
+});
+// Function to toggle direction and save to local storage
+function toggleDir() {
+    const html = document.documentElement;
+    const newDir = html.dir === 'ltr' ? 'rtl' : 'ltr';
+    
+    // Apply the direction
+    html.dir = newDir;
+    
+    // Save to local storage
+    localStorage.setItem('site-direction', newDir);
+    
+    // Optional: Log it for debugging
+    console.log(`Direction changed to: ${newDir}`);
+}
+
+// Initialization: Run this as soon as the DOM is ready
+(function() {
+    const savedDir = localStorage.getItem('site-direction');
+    if (savedDir) {
+        document.documentElement.dir = savedDir;
+    } else {
+        // Default to LTR if nothing is saved
+        document.documentElement.dir = 'ltr';
+    }
+})();
+        // LTR / RTL Toggle
+        // function toggleDir() {
+        //     const html = document.documentElement;
+        //     html.dir = html.dir === 'ltr' ? 'rtl' : 'ltr';
+        // }
+    </script>
+</body>
+</html>

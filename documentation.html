@@ -1,0 +1,968 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="assets/code (2).png">
+    <title>Dev Base | Open Source</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3b82f6',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .transition-all { transition: all 0.3s ease; }
+    </style>
+</head>
+<body class="bg-white text-slate-900 dark:bg-slate-900 dark:text-white transition-all">
+<nav class="fixed w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16 items-center">
+            <a href="index.html" class="flex-shrink-0 flex items-center gap-2">
+                <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white">
+                    <i class="fas fa-code"></i>
+                </div>
+                <span class="font-bold text-xl tracking-tight">DEV<span class="text-primary">BASE</span></span>
+            </a>
+
+            <div class="hidden lg:flex space-x-8 items-center">
+                <a href="index.html" class="nav-link hover:text-primary transition-colors">Home 1</a>
+                <a href="home2.html" class="nav-link hover:text-primary transition-colors">Home 2</a>
+                <a href="aboutus.html" class="nav-link hover:text-primary transition-colors">About</a>
+                <a href="documentation.html" class="nav-link hover:text-primary transition-colors">Documentation</a>
+                <a href="service.html" class="nav-link hover:text-primary transition-colors">Services</a>
+                <a href="pricing.html" class="nav-link hover:text-primary transition-colors">Pricing</a>
+                <a href="contact.html" class="nav-link hover:text-primary transition-colors">Contact</a>
+            </div>
+
+            <div class="lg:hidden flex items-center gap-2">
+                <button onclick="toggleTheme()" class="p-2 rounded-full"><i id="theme-icon-mobile" class="fas fa-moon"></i></button>
+                <button onclick="toggleMenu()" class="text-2xl p-2 text-slate-600 dark:text-slate-300">
+                    <i id="menu-toggle-icon" class="fas fa-bars"></i>
+                </button>
+            </div>
+            
+            <div class="hidden lg:flex items-center gap-4">
+                <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800">
+                    <i id="theme-icon" class="fas fa-moon"></i>
+                
+                <button onclick="toggleDir()" class="text-xs font-bold border px-2 py-1 rounded hover:border-primary transition-all">
+    LTR / RTL
+</button></button>
+                <!-- <button onclick="toggleDir()" class="text-xs font-bold border px-2 py-1 rounded hover:border-primary">LTR/RTL</button> -->
+                <a href="login.html">
+                    <button class="bg-primary text-white px-5 py-2 rounded-full font-medium hover:opacity-90 transition-all">Register</button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden lg:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-6 py-8 shadow-xl">
+        <div class="flex flex-col space-y-2">
+            <a href="index.html" class="nav-link block py-3 text-lg font-medium border-b border-slate-100 dark:border-slate-800 last:border-0 hover:text-primary">Home 1</a>
+            <a href="home2.html" class="nav-link block py-3 text-lg font-medium border-b border-slate-100 dark:border-slate-800 last:border-0 hover:text-primary">Home 2</a>
+            <a href="aboutus.html" class="nav-link block py-3 text-lg font-medium border-b border-slate-100 dark:border-slate-800 last:border-0 hover:text-primary">About</a>
+            <a href="documentation.html" class="nav-link block py-3 text-lg font-medium border-b border-slate-100 dark:border-slate-800 last:border-0 hover:text-primary">Documentation</a>
+            <a href="service.html" class="nav-link block py-3 text-lg font-medium border-b border-slate-100 dark:border-slate-800 last:border-0 hover:text-primary">Services</a>
+            <a href="pricing.html" class="nav-link block py-3 text-lg font-medium border-b border-slate-100 dark:border-slate-800 last:border-0 hover:text-primary">Pricing</a>
+            <a href="contact.html" class="nav-link block py-3 text-lg font-medium border-b border-slate-100 dark:border-slate-800 last:border-0 hover:text-primary">Contact</a>
+        </div>
+        
+        <div class="mt-8 space-y-4">
+            <a href="login.html" class="block">
+                <button class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg">Register Now</button>
+            </a>
+           <button onclick="toggleDir()" class="text-xs font-bold border px-2 py-1 rounded hover:border-primary transition-all">
+    LTR / RTL
+</button>
+            <!-- <button onclick="toggleDir()" class="w-full border border-slate-300 dark:border-slate-700 py-3 rounded-xl font-medium">Switch LTR/RTL</button> -->
+        </div>
+    </div>
+</nav>
+   
+
+<style>
+    /* Base Transition for all links */
+.nav-link {
+    transition: all 0.2s ease-in-out;
+}
+
+/* Global Active Class */
+.nav-link-active {
+    color: #3b82f6 !important; /* Tailwind Primary Blue */
+    font-weight: 700;
+}
+
+/* Desktop Specific (Large screens) */
+@media (min-width: 1024px) {
+    .nav-link-active {
+        position: relative;
+    }
+    .nav-link-active::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background-color: #3b82f6;
+        border-radius: 99px;
+    }
+}
+
+/* Mobile & Tablet Specific (Below 1024px) */
+@media (max-width: 1023px) {
+    .nav-link-active {
+        background-color: rgba(59, 130, 246, 0.05); /* Very light blue tint */
+        padding-left: 12px; /* Slight indent to show it's active */
+        border-left: 4px solid #3b82f6;
+    }
+}
+</style>
+<script>
+    // Function to handle Active State
+function handleActiveNav() {
+    const currentPath = window.location.pathname;
+    const links = document.querySelectorAll('.nav-link');
+
+    links.forEach(link => {
+        const linkPath = link.getAttribute('href');
+        
+        // Matches if current path ends with the link path (e.g., /aboutus.html)
+        // Also handles the root "/" matching "index.html"
+        if (currentPath.endsWith(linkPath) || (currentPath === '/' && linkPath === '/index.html')) {
+            link.classList.add('nav-link-active');
+        } else {
+            link.classList.remove('nav-link-active');
+        }
+    });
+}
+
+// Function to toggle Mobile/Tablet Menu
+function toggleMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const icon = document.getElementById('menu-toggle-icon');
+    
+    const isHidden = menu.classList.toggle('hidden');
+    
+    if (isHidden) {
+        icon.classList.replace('fa-times', 'fa-bars');
+    } else {
+        icon.classList.replace('fa-bars', 'fa-times');
+    }
+}
+
+// Run on page load
+window.addEventListener('DOMContentLoaded', handleActiveNav);
+</script>
+
+<section id="docs-hero" class="relative pt-32 pb-16 lg:pt-48 lg:pb-24 bg-slate-50 dark:bg-slate-900 transition-colors duration-500 overflow-hidden">
+    
+    <div class="absolute inset-0 z-0 opacity-[0.03] dark:opacity-[0.05] pointer-events-none" 
+         style="background-image: radial-gradient(#3b82f6 1px, transparent 1px); background-size: 30px 30px;"></div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <div class="lg:col-span-7 reveal-up text-center lg:text-left">
+                <nav class="flex justify-center lg:justify-start items-center gap-2 mb-6 text-xs font-bold uppercase tracking-[0.2em] text-slate-400">
+                    <a href="index.html" class="hover:text-primary transition-colors">DEV BASE</a>
+                    <i class="fas fa-chevron-right text-[8px]"></i>
+                    <span class="text-primary">Docs</span>
+                </nav>
+
+                <h1 class="text-4xl md:text-6xl font-black text-slate-900 dark:text-white mb-6 leading-tight">
+                    Introduction to <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400">The Ecosystem.</span>
+                </h1>
+                
+                <p class="text-lg md:text-xl text-slate-600 dark:text-slate-400 mb-10 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                    Welcome to the core documentation. This guide is built to help you install, configure, and scale your software with maximum efficiency.
+                </p>
+
+                <div class="relative max-w-2xl group mx-auto lg:mx-0">
+                    <div class="absolute inset-y-0 left-5 flex items-center pointer-events-none">
+                        <i class="fas fa-search text-slate-400 group-focus-within:text-primary transition-colors"></i>
+                    </div>
+                    <input type="text" placeholder="Search documentation (Cmd + K)" 
+                           class="w-full pl-14 pr-32 py-5 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-xl shadow-slate-200/50 dark:shadow-none outline-none focus:ring-2 focus:ring-primary transition-all dark:text-white">
+                    <div class="absolute inset-y-2 right-2 hidden md:flex items-center">
+                        <kbd class="px-3 py-2 rounded-lg bg-slate-100 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 text-[10px] font-black text-slate-500">⌘ K</kbd>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-4 reveal-up delay-200">
+                <a href="#install" class="group p-6 rounded-3xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-primary transition-all shadow-sm">
+                    <div class="w-10 h-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-white transition-all">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <h4 class="font-bold dark:text-white text-sm">Quick Install</h4>
+                    <p class="text-xs text-slate-500 mt-1">Get up and running in 5 minutes.</p>
+                </a>
+                
+                <a href="#config" class="group p-6 rounded-3xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-blue-400 transition-all shadow-sm">
+                    <div class="w-10 h-10 rounded-xl bg-blue-400/10 text-blue-400 flex items-center justify-center mb-4 group-hover:bg-blue-400 group-hover:text-white transition-all">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    <h4 class="font-bold dark:text-white text-sm">Configuration</h4>
+                    <p class="text-xs text-slate-500 mt-1">Fine-tune your environment.</p>
+                </a>
+
+                <a href="#api" class="group p-6 rounded-3xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-purple-500 transition-all shadow-sm">
+                    <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-500 flex items-center justify-center mb-4 group-hover:bg-purple-500 group-hover:text-white transition-all">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h4 class="font-bold dark:text-white text-sm">API Reference</h4>
+                    <p class="text-xs text-slate-500 mt-1">Endpoints and data schemas.</p>
+                </a>
+
+                <a href="#community" class="group p-6 rounded-3xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:border-green-500 transition-all shadow-sm">
+                    <div class="w-10 h-10 rounded-xl bg-green-500/10 text-green-500 flex items-center justify-center mb-4 group-hover:bg-green-500 group-hover:text-white transition-all">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4 class="font-bold dark:text-white text-sm">Community</h4>
+                    <p class="text-xs text-slate-500 mt-1">Join the GitHub discussion.</p>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<section id="requirements" class="py-24 bg-white dark:bg-slate-950 transition-colors duration-500 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 reveal-up">
+            <div class="max-w-xl">
+               <div class="flex flex-col items-center lg:items-start text-center lg:text-left reveal-up">
+    
+    <h2 class="text-3xl md:text-5xl font-black text-slate-900 dark:text-white mb-6 leading-tight">
+        Pre-flight <span class="text-primary">Checklist</span>
+    </h2>
+
+</div>
+                <p class="text-slate-600 dark:text-slate-400">
+                    Ensure your environment meets these minimum requirements before initiating the installation process.
+                </p>
+            </div>
+            <div class="mt-6 md:mt-0">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 text-xs font-bold uppercase tracking-widest">
+                    <i class="fas fa-info-circle"></i> Version 2.4.0 Compatible
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            
+            <div class="reveal-up group p-8 rounded-[2rem] bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-primary transition-all duration-300">
+                <div class="w-12 h-12 bg-white dark:bg-slate-800 rounded-xl shadow-sm flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                    <i class="fas fa-laptop text-primary text-xl"></i>
+                </div>
+                <h4 class="font-bold dark:text-white mb-2">Operating System</h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                    macOS 12+, Ubuntu 20.04+, or Windows 10+ (WSL2 recommended).
+                </p>
+            </div>
+
+            <div class="reveal-up delay-100 group p-8 rounded-[2rem] bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-primary transition-all duration-300">
+                <div class="w-12 h-12 bg-white dark:bg-slate-800 rounded-xl shadow-sm flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                    <i class="fab fa-node-js text-green-500 text-xl"></i>
+                </div>
+                <h4 class="font-bold dark:text-white mb-2">Runtime Environment</h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                    Node.js LTS (v18.x or v20.x) or Python 3.10+ required.
+                </p>
+            </div>
+
+            <div class="reveal-up delay-200 group p-8 rounded-[2rem] bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-primary transition-all duration-300">
+                <div class="w-12 h-12 bg-white dark:bg-slate-800 rounded-xl shadow-sm flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                    <i class="fas fa-box-open text-orange-500 text-xl"></i>
+                </div>
+                <h4 class="font-bold dark:text-white mb-2">Package Manager</h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                    Latest version of npm, yarn, or pnpm globally installed.
+                </p>
+            </div>
+
+            <div class="reveal-up delay-300 group p-8 rounded-[2rem] bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-primary transition-all duration-300">
+                <div class="w-12 h-12 bg-white dark:bg-slate-800 rounded-xl shadow-sm flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                    <i class="fas fa-wifi text-blue-400 text-xl"></i>
+                </div>
+                <h4 class="font-bold dark:text-white mb-2">Network Connection</h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                    Active internet connection for package fetching and sync.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="mt-12 p-6 rounded-3xl bg-blue-500/5 border border-blue-500/20 flex flex-col md:flex-row items-center gap-6 reveal-up">
+            <div class="w-10 h-10 rounded-full bg-blue-500 text-white flex items-center justify-center shrink-0">
+                <i class="fas fa-lightbulb"></i>
+            </div>
+            <p class="text-sm text-blue-700 dark:text-blue-300 text-center md:text-left">
+                <strong>Pro Tip:</strong> You can run <code class="px-2 py-1 bg-blue-500/10 rounded font-mono">devbase doctor</code> after installation to automatically verify these requirements.
+            </p>
+        </div>
+    </div>
+</section>
+<section id="installation" class="py-24 bg-slate-50 dark:bg-slate-900 transition-colors duration-500 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+            
+            <div class="lg:col-span-5 reveal-up">
+               <div class="flex flex-col items-center lg:items-start text-center lg:text-left reveal-up">
+    
+    <h2 class="text-3xl md:text-5xl font-black text-slate-900 dark:text-white mb-8 leading-tight">
+        Installation 
+        <br class="hidden lg:block"> 
+        <span class="text-primary">Walkthrough</span>
+    </h2>
+
+</div>
+                
+                <div class="space-y-4">
+                    <button onclick="showInstallStep(1)" class="install-step-btn active-step w-full flex items-center gap-6 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 text-left transition-all group">
+                        <span class="step-num w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-700 flex items-center justify-center font-bold text-slate-500 transition-all">1</span>
+                        <div>
+                            <h4 class="font-bold dark:text-white group-hover:text-primary transition-colors">Download Project</h4>
+                            <p class="text-xs text-slate-500">Clone from the official repo.</p>
+                        </div>
+                    </button>
+
+                    <button onclick="showInstallStep(2)" class="install-step-btn w-full flex items-center gap-6 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 text-left transition-all group">
+                        <span class="step-num w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-700 flex items-center justify-center font-bold text-slate-500 transition-all">2</span>
+                        <div>
+                            <h4 class="font-bold dark:text-white group-hover:text-primary transition-colors">Install Dependencies</h4>
+                            <p class="text-xs text-slate-500">Fetch required packages.</p>
+                        </div>
+                    </button>
+
+                    <button onclick="showInstallStep(3)" class="install-step-btn w-full flex items-center gap-6 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 text-left transition-all group">
+                        <span class="step-num w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-700 flex items-center justify-center font-bold text-slate-500 transition-all">3</span>
+                        <div>
+                            <h4 class="font-bold dark:text-white group-hover:text-primary transition-colors">Run Setup</h4>
+                            <p class="text-xs text-slate-500">Initialize core components.</p>
+                        </div>
+                    </button>
+
+                    <button onclick="showInstallStep(4)" class="install-step-btn w-full flex items-center gap-6 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800 text-left transition-all group">
+                        <span class="step-num w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-700 flex items-center justify-center font-bold text-slate-500 transition-all">4</span>
+                        <div>
+                            <h4 class="font-bold dark:text-white group-hover:text-primary transition-colors">Start App</h4>
+                            <p class="text-xs text-slate-500">Launch the local server.</p>
+                        </div>
+                    </button>
+                </div>
+            </div>
+
+            <div class="lg:col-span-7 reveal-up delay-200 lg:sticky lg:top-32">
+                <div class="relative group">
+                    <div class="bg-slate-800 rounded-t-3xl px-6 py-4 flex items-center justify-between border-b border-slate-700">
+                        <div class="flex gap-2">
+                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        </div>
+                        <span id="terminal-step-title" class="text-[10px] font-mono text-slate-400 uppercase tracking-widest">Step 1: Clone</span>
+                    </div>
+                    
+                    <div class="bg-slate-950 p-8 rounded-b-3xl shadow-2xl font-mono text-sm md:text-base min-h-[250px] relative">
+                        <div id="terminal-content" class="space-y-4">
+                            </div>
+
+                        <button onclick="copyInstallCode()" class="absolute top-6 right-6 p-3 rounded-xl bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700 transition-all">
+                            <i id="copy-icon-install" class="far fa-copy"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="absolute -inset-1 bg-gradient-to-r from-primary/20 to-purple-500/20 rounded-[2.5rem] blur-xl -z-10 opacity-50"></div>
+                </div>
+                
+                <div class="mt-8 p-6 bg-white dark:bg-slate-800 rounded-3xl border border-slate-200 dark:border-slate-700 flex items-center gap-4">
+                    <div class="w-10 h-10 rounded-full bg-primary/10 text-primary flex items-center justify-center shrink-0">
+                        <i class="fas fa-info-circle"></i>
+                    </div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">
+                        Need help? Join our <a href="#" class="text-primary font-bold hover:underline">Discord</a> for real-time installation support.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<style>
+    .active-step { border-color: #3b82f6 !important; box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.1); }
+    .active-step .step-num { background: #3b82f6 !important; color: white !important; }
+</style>
+
+<script>
+    const installData = {
+        1: { title: "Step 1: Clone", code: "git clone https://github.com/devbase/core.git\ncd core", comment: "# Clone the repository and enter directory" },
+        2: { title: "Step 2: Install", code: "npm install", comment: "# Install all node dependencies" },
+        3: { title: "Step 3: Setup", code: "npm run setup", comment: "# Run the interactive setup wizard" },
+        4: { title: "Step 4: Launch", code: "npm start", comment: "# Start the dev server at localhost:3000" }
+    };
+
+    function showInstallStep(step) {
+        // Update buttons
+        document.querySelectorAll('.install-step-btn').forEach(btn => btn.classList.remove('active-step'));
+        event.currentTarget.classList.add('active-step');
+
+        // Update Terminal
+        const title = document.getElementById('terminal-step-title');
+        const content = document.getElementById('terminal-content');
+        
+        title.innerText = installData[step].title;
+        content.style.opacity = '0';
+        
+        setTimeout(() => {
+            content.innerHTML = `
+                <div class="text-slate-500 mb-2">${installData[step].comment}</div>
+                <div class="text-white flex items-center gap-3">
+                    <span class="text-primary">$</span>
+                    <span id="current-code">${installData[step].code}</span>
+                </div>
+            `;
+            content.style.opacity = '1';
+        }, 150);
+    }
+
+    function copyInstallCode() {
+        const code = document.getElementById('current-code').innerText;
+        navigator.clipboard.writeText(code).then(() => {
+            const icon = document.getElementById('copy-icon-install');
+            icon.classList.replace('fa-copy', 'fa-check');
+            icon.classList.add('text-green-500');
+            setTimeout(() => {
+                icon.classList.replace('fa-check', 'fa-copy');
+                icon.classList.remove('text-green-500');
+            }, 2000);
+        });
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+        showInstallStep(1);
+    });
+</script>
+
+<section id="quick-start" class="py-24 bg-white dark:bg-slate-950 transition-colors duration-500 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center mb-16 reveal-up">
+            <h2 class="text-3xl md:text-5xl font-black text-slate-900 dark:text-white mb-6">
+                Fast <span class="text-primary">Sprint</span>
+            </h2>
+            <p class="text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">
+                Follow these four rapid steps to move from local setup to a live production-ready environment.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+            
+            <div class="absolute hidden lg:block top-1/2 left-0 w-full h-0.5 bg-slate-100 dark:bg-slate-800 -z-10 -translate-y-12"></div>
+
+            <div class="reveal-up group relative p-8 rounded-[2.5rem] bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-primary transition-all duration-300">
+                <div class="w-14 h-14 bg-white dark:bg-slate-800 rounded-2xl shadow-lg flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-all">
+                    <i class="fas fa-sliders-h"></i>
+                </div>
+                <h4 class="font-bold dark:text-white mb-2">1. Configure</h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                    Set your <code class="text-primary">.env</code> keys and database credentials.
+                </p>
+                <div class="mt-6 flex items-center gap-2 text-[10px] font-bold text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+                    READY <i class="fas fa-arrow-right"></i>
+                </div>
+            </div>
+
+            <div class="reveal-up delay-100 group relative p-8 rounded-[2.5rem] bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-primary transition-all duration-300">
+                <div class="w-14 h-14 bg-white dark:bg-slate-800 rounded-2xl shadow-lg flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-all">
+                    <i class="fas fa-play"></i>
+                </div>
+                <h4 class="font-bold dark:text-white mb-2">2. Start Server</h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                    Execute <code class="text-primary">devbase up</code> to spin up the local engine.
+                </p>
+                <div class="mt-6 flex items-center gap-2 text-[10px] font-bold text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+                    BOOTING <i class="fas fa-arrow-right"></i>
+                </div>
+            </div>
+
+            <div class="reveal-up delay-200 group relative p-8 rounded-[2.5rem] bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-primary transition-all duration-300">
+                <div class="w-14 h-14 bg-white dark:bg-slate-800 rounded-2xl shadow-lg flex items-center justify-center mb-6 group-hover:bg-primary group-hover:text-white transition-all">
+                    <i class="fas fa-desktop"></i>
+                </div>
+                <h4 class="font-bold dark:text-white mb-2">3. Open Panel</h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                    Navigate to <code class="text-primary">localhost:3000</code> in your browser.
+                </p>
+                <div class="mt-6 flex items-center gap-2 text-[10px] font-bold text-primary opacity-0 group-hover:opacity-100 transition-opacity">
+                    VISIT <i class="fas fa-arrow-right"></i>
+                </div>
+            </div>
+
+            <div class="reveal-up delay-300 group relative p-8 rounded-[2.5rem] bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 hover:border-green-500 transition-all duration-300">
+                <div class="w-14 h-14 bg-white dark:bg-slate-800 rounded-2xl shadow-lg flex items-center justify-center mb-6 group-hover:bg-green-500 group-hover:text-white transition-all">
+                    <i class="fas fa-check-double"></i>
+                </div>
+                <h4 class="font-bold dark:text-white mb-2">4. Verify</h4>
+                <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
+                    Run the built-in health check to confirm all systems are GO.
+                </p>
+                <div class="mt-6 flex items-center gap-2 text-[10px] font-bold text-green-500 opacity-0 group-hover:opacity-100 transition-opacity">
+                    SUCCESS <i class="fas fa-check"></i>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="mt-16 text-center">
+            <button onclick="simulateHealthCheck()" id="verify-btn" class="bg-primary text-white px-8 py-4 rounded-2xl font-black shadow-xl shadow-primary/30 hover:-translate-y-1 active:scale-95 transition-all">
+                Run System Health Check
+            </button>
+            <p id="health-status" class="hidden mt-4 text-sm font-mono text-green-500 animate-pulse">
+                [SYSTEM]: All microservices reported healthy. You are ready to build.
+            </p>
+        </div>
+    </div>
+</section>
+
+<script>
+    function simulateHealthCheck() {
+        const btn = document.getElementById('verify-btn');
+        const status = document.getElementById('health-status');
+        
+        btn.innerHTML = '<i class="fas fa-spinner animate-spin"></i> Checking...';
+        btn.disabled = true;
+
+        setTimeout(() => {
+            btn.innerHTML = 'System Healthy';
+            btn.classList.replace('bg-primary', 'bg-green-500');
+            btn.classList.replace('shadow-primary/30', 'shadow-green-500/30');
+            status.classList.remove('hidden');
+        }, 2000);
+    }
+</script>
+<section id="config-features" class="py-24 bg-slate-50 dark:bg-slate-900 transition-colors duration-500">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            <div class="lg:col-span-8 p-8 md:p-12 rounded-[3rem] bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 reveal-up">
+                <h3 class="text-2xl font-bold mb-8 dark:text-white flex items-center gap-3">
+                    <i class="fas fa-sliders-h text-primary"></i> 5. Configuration
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-transparent hover:border-primary transition-all group">
+                        <h4 class="font-bold text-sm dark:text-white mb-2">Environment Variables</h4>
+                        <p class="text-xs text-slate-500">Manage secrets using <code class="text-primary">.env</code> files.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl bg-slate-50 dark:bg-slate-900/50 border border-transparent hover:border-primary transition-all group">
+                        <h4 class="font-bold text-sm dark:text-white">Database Settings</h4>
+                        <p class="text-xs text-slate-500">Native support for PostgreSQL and MongoDB.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-4 p-8 rounded-[3rem] bg-primary text-white shadow-xl shadow-primary/20 reveal-up delay-100 flex flex-col justify-between">
+                <div>
+                    <h3 class="text-xl font-bold mb-6">6. Features Guide</h3>
+                    <ul class="space-y-4 text-sm opacity-90">
+                        <li class="flex items-center gap-3"><i class="fas fa-microchip"></i> Core Engine</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-cubes"></i> Module System</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-project-diagram"></i> Workflow</li>
+                    </ul>
+                </div>
+                <button class="mt-8 w-full py-3 bg-white/10 border border-white/20 text-white font-bold rounded-xl hover:bg-white/20 transition-all">View All Modules</button>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="api-usage" class="py-24 bg-white dark:bg-slate-950 transition-colors duration-500">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            
+            <div class="reveal-up">
+                <h3 class="text-3xl font-black mb-8 dark:text-white">7. API Reference</h3>
+                <div class="space-y-4">
+                    <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-900 transition-all cursor-pointer">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-xs font-bold text-green-500 bg-green-500/10 px-2 py-1 rounded">GET</span>
+                            <span class="text-[10px] font-mono text-slate-400">/v1/user/auth</span>
+                        </div>
+                        <p class="text-sm dark:text-slate-300">Retrieve session authentication status.</p>
+                    </div>
+                    <div class="p-6 rounded-2xl border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-900 transition-all cursor-pointer">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-xs font-bold text-blue-500 bg-blue-500/10 px-2 py-1 rounded">POST</span>
+                            <span class="text-[10px] font-mono text-slate-400">/v1/data/sync</span>
+                        </div>
+                        <p class="text-sm dark:text-slate-300">Trigger manual data synchronization.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reveal-up delay-200">
+                <div class="bg-slate-900 rounded-[2.5rem] p-8 border border-white/5 shadow-2xl h-full relative">
+                    <div class="flex gap-2 mb-6">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                    </div>
+                    <h4 class="text-slate-400 font-mono text-xs mb-4 uppercase tracking-widest">8. Usage Examples</h4>
+                    <pre class="text-xs md:text-sm font-mono text-slate-300 leading-relaxed overflow-x-auto">
+<span class="text-slate-500">// Basic Automation Workflow</span>
+const db = require('devbase-sdk');
+
+db.connect({
+  id: 'vx_99',
+  secure: true
+});
+
+db.on('deploy', (status) => {
+  console.log('Success:', status);
+});</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="community-shield" class="py-24 bg-slate-50 dark:bg-slate-900 transition-colors duration-500">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <div class="reveal-up p-8 rounded-[2rem] bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-all group">
+                <div class="w-12 h-12 bg-red-500/10 text-red-500 rounded-xl flex items-center justify-center mb-6 group-hover:bg-red-500 group-hover:text-white transition-all">
+                    <i class="fas fa-stethoscope"></i>
+                </div>
+                <h4 class="font-bold dark:text-white mb-2">9. Troubleshooting</h4>
+                <p class="text-xs text-slate-500 leading-relaxed">Fix installation and dependency errors instantly.</p>
+            </div>
+
+            <div class="reveal-up delay-100 p-8 rounded-[2rem] bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-all group">
+                <div class="w-12 h-12 bg-purple-500/10 text-purple-500 rounded-xl flex items-center justify-center mb-6 group-hover:bg-purple-500 group-hover:text-white transition-all">
+                    <i class="fas fa-hands-helping"></i>
+                </div>
+                <h4 class="font-bold dark:text-white mb-2">10. Contributing</h4>
+                <p class="text-xs text-slate-500 leading-relaxed">Fork, branch, and submit PRs to our core repo.</p>
+            </div>
+
+            <div class="reveal-up delay-200 p-8 rounded-[2rem] bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:shadow-xl transition-all group">
+                <div class="w-12 h-12 bg-green-500/10 text-green-500 rounded-xl flex items-center justify-center mb-6 group-hover:bg-green-500 group-hover:text-white transition-all">
+                    <i class="fas fa-user-shield"></i>
+                </div>
+                <h4 class="font-bold dark:text-white mb-2">11. Security</h4>
+                <p class="text-xs text-slate-500 leading-relaxed">Report vulnerabilities and stay updated on patches.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section id="faq" class="py-24 bg-white dark:bg-slate-950 transition-colors duration-300 overflow-hidden">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center mb-16 reveal-up">
+            <h2 class="text-3xl md:text-5xl font-black text-slate-900 dark:text-white mb-4">
+                Frequently Asked <span class="text-primary">Questions</span>
+            </h2>
+            <p class="text-slate-500 dark:text-slate-400">Everything you need to know about the DEV BASE ecosystem.</p>
+        </div>
+
+        <div class="space-y-4">
+            
+            <div class="reveal-up border border-slate-200 dark:border-slate-800 rounded-[2rem] overflow-hidden bg-slate-50 dark:bg-slate-900/50 transition-all hover:border-primary/50">
+                <button onclick="toggleFAQ(1)" class="w-full p-6 md:p-8 flex items-center justify-between text-left group">
+                    <span class="text-lg font-bold dark:text-white group-hover:text-primary transition-colors">How do I install DEV BASE?</span>
+                    <div id="faq-icon-1" class="w-8 h-8 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center transition-transform duration-300">
+                        <i class="fas fa-plus text-xs text-primary"></i>
+                    </div>
+                </button>
+                <div id="faq-ans-1" class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                    <div class="p-8 pt-0 text-slate-600 dark:text-slate-400 leading-relaxed border-t border-slate-100 dark:border-slate-800 mt-4">
+                        Installation is simple. Run <code class="bg-primary/10 text-primary px-2 py-1 rounded">npm install @devbase/core</code> in your terminal. For a full guide, check our <a href="#installation" class="text-primary font-bold hover:underline">Installation Section</a>.
+                    </div>
+                </div>
+            </div>
+
+            <div class="reveal-up delay-100 border border-slate-200 dark:border-slate-800 rounded-[2rem] overflow-hidden bg-slate-50 dark:bg-slate-900/50 transition-all hover:border-primary/50">
+                <button onclick="toggleFAQ(2)" class="w-full p-6 md:p-8 flex items-center justify-between text-left group">
+                    <span class="text-lg font-bold dark:text-white group-hover:text-primary transition-colors">How do I update to the latest version?</span>
+                    <div id="faq-icon-2" class="w-8 h-8 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center transition-transform duration-300">
+                        <i class="fas fa-plus text-xs text-primary"></i>
+                    </div>
+                </button>
+                <div id="faq-ans-2" class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                    <div class="p-8 pt-0 text-slate-600 dark:text-slate-400 leading-relaxed border-t border-slate-100 dark:border-slate-800 mt-4">
+                        To update, execute <code class="bg-primary/10 text-primary px-2 py-1 rounded">devbase update</code>. This will automatically pull the latest stable branch and run a dependency check to ensure compatibility.
+                    </div>
+                </div>
+            </div>
+
+            <div class="reveal-up delay-200 border border-slate-200 dark:border-slate-800 rounded-[2rem] overflow-hidden bg-slate-50 dark:bg-slate-900/50 transition-all hover:border-primary/50">
+                <button onclick="toggleFAQ(3)" class="w-full p-6 md:p-8 flex items-center justify-between text-left group">
+                    <span class="text-lg font-bold dark:text-white group-hover:text-primary transition-colors">How can I contribute?</span>
+                    <div id="faq-icon-3" class="w-8 h-8 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center transition-transform duration-300">
+                        <i class="fas fa-plus text-xs text-primary"></i>
+                    </div>
+                </button>
+                <div id="faq-ans-3" class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                    <div class="p-8 pt-0 text-slate-600 dark:text-slate-400 leading-relaxed border-t border-slate-100 dark:border-slate-800 mt-4">
+                        We love community input! Fork our GitHub repository, create a new branch for your feature or fix, and submit a Pull Request. Please follow our <a href="#contributing" class="text-primary font-bold hover:underline">Coding Standards</a>.
+                    </div>
+                </div>
+            </div>
+
+            <div class="reveal-up delay-300 border border-slate-200 dark:border-slate-800 rounded-[2rem] overflow-hidden bg-slate-50 dark:bg-slate-900/50 transition-all hover:border-primary/50">
+                <button onclick="toggleFAQ(4)" class="w-full p-6 md:p-8 flex items-center justify-between text-left group">
+                    <span class="text-lg font-bold dark:text-white group-hover:text-primary transition-colors">Where do I get technical support?</span>
+                    <div id="faq-icon-4" class="w-8 h-8 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center transition-transform duration-300">
+                        <i class="fas fa-plus text-xs text-primary"></i>
+                    </div>
+                </button>
+                <div id="faq-ans-4" class="max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                    <div class="p-8 pt-0 text-slate-600 dark:text-slate-400 leading-relaxed border-t border-slate-100 dark:border-slate-800 mt-4">
+                        You can get support via our community <a href="#" class="text-primary font-bold hover:underline">Discord server</a>, open an issue on GitHub, or reach out to our dedicated support email for Enterprise clients.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<script>
+    function toggleFAQ(id) {
+        const answer = document.getElementById(`faq-ans-${id}`);
+        const icon = document.getElementById(`faq-icon-${id}`);
+        const iconI = icon.querySelector('i');
+        
+        // Close other FAQs (optional, but cleaner)
+        // document.querySelectorAll('[id^="faq-ans-"]').forEach(el => {
+        //     if(el.id !== `faq-ans-${id}`) el.style.maxHeight = '0';
+        // });
+
+        if (answer.style.maxHeight === '0px' || !answer.style.maxHeight) {
+            answer.style.maxHeight = answer.scrollHeight + "px";
+            icon.style.transform = "rotate(45deg)";
+            icon.classList.add('bg-primary');
+            iconI.classList.replace('fa-plus', 'fa-times');
+            iconI.classList.replace('text-primary', 'text-white');
+        } else {
+            answer.style.maxHeight = '0px';
+            icon.style.transform = "rotate(0deg)";
+            icon.classList.remove('bg-primary');
+            iconI.classList.replace('fa-times', 'fa-plus');
+            iconI.classList.replace('text-white', 'text-primary');
+        }
+    }
+</script>
+<section id="final-cta" class="py-24 bg-white dark:bg-slate-950 transition-colors duration-500 overflow-hidden relative">
+    
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-4xl bg-primary/20 blur-[120px] rounded-full opacity-50 pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="bg-slate-900 dark:bg-slate-900 rounded-[3rem] p-8 md:p-16 lg:p-20 text-center relative overflow-hidden shadow-2xl border border-white/5">
+            
+            <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none select-none font-mono text-[10px] text-white p-10 leading-relaxed hidden md:block text-left">
+                git commit -m "initial deploy" <br>
+                npm install @devbase/core <br>
+                devbase init --production <br>
+                status: ready_to_build
+            </div>
+
+            <div class="reveal-up relative z-20">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-primary border border-white/10 mb-8">
+                    <i class="fas fa-rocket text-xs animate-bounce"></i>
+                    <span class="text-[10px] font-black uppercase tracking-[0.2em] text-white">Ready to start?</span>
+                </div>
+
+                <h2 class="text-4xl md:text-6xl font-black text-white mb-8 leading-tight tracking-tighter">
+                    Fuel your code with <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary via-blue-400 to-cyan-400">limitless power.</span>
+                </h2>
+                
+                <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed">
+                    Join over 10,000 developers building the future of open-source. Start your first project in less than 5 minutes.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="login.html" class="w-full sm:w-auto px-10 py-5 bg-primary text-white font-black rounded-2xl shadow-xl shadow-primary/40 hover:-translate-y-1 active:scale-95 transition-all text-center">
+                        Create Free Account
+                    </a>
+                    <a href="documentation.html" class="w-full sm:w-auto px-10 py-5 bg-white/5 border border-white/10 text-white font-bold rounded-2xl hover:bg-white/10 transition-all text-center group">
+                        Read the Docs <i class="fas fa-arrow-right ml-2 text-xs transition-transform group-hover:translate-x-1"></i>
+                    </a>
+                </div>
+
+                <div class="mt-16 pt-12 border-t border-white/5 flex flex-col md:flex-row items-center justify-center gap-8">
+                    <div class="flex -space-x-3">
+                        <img class="w-10 h-10 rounded-full border-2 border-slate-900" src="assets/t1" alt="user">
+                        <img class="w-10 h-10 rounded-full border-2 border-slate-900" src="assets/t2" alt="user">
+                        <img class="w-10 h-10 rounded-full border-2 border-slate-900" src="assets/t3" alt="user">
+                        <div class="w-10 h-10 rounded-full border-2 border-slate-900 bg-slate-800 flex items-center justify-center text-[10px] font-bold text-white">+2k</div>
+                    </div>
+                    <p class="text-slate-500 text-sm font-medium">Developers joined in the last 24 hours</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+       <footer class="bg-white dark:bg-slate-900 pt-20 pb-10 border-t border-slate-200 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-1 md:col-span-1">
+                    <a href="index.html">
+                          <div class="flex items-center gap-2 mb-6">
+                        <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white"><i class="fas fa-code"></i></div>
+                <span class="font-bold text-xl tracking-tight">DEV<span class="text-primary">BASE</span></span>
+                    </div>
+                    </a>
+                  
+                    <p class="text-slate-500 text-sm leading-relaxed">
+                        The ultimate platform for collaborative software development and enterprise-grade open source tools.
+                    </p>
+                    <div class="flex gap-4 mt-6">
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all"><i class="fab fa-github"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6 uppercase text-xs tracking-widest">Quick Links</h4>
+                    <ul class="space-y-4 text-slate-500">
+                        <li><a href="index.html" class="hover:text-primary">Home 1</a></li>
+                        <li><a href="home2.html" class="hover:text-primary">Home 2</a></li>
+                        <li><a href="aboutus.html" class="hover:text-primary">About Us</a></li>
+                        <li><a href="service.html" class="hover:text-primary">Services</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6 uppercase text-xs tracking-widest">Resources</h4>
+                    <ul class="space-y-4 text-slate-500">
+                        <li><a href="pricing.html" class="hover:text-primary">Pricing</a></li>
+                        <li><a href="contact.html" class="hover:text-primary">Contact</a></li>
+                        <li><a href="comingsoon.html" class="hover:text-primary">ComingSoon</a></li>
+                        <li><a href="404.html" class="hover:text-primary">404</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-6 uppercase text-xs tracking-widest">Contact Info</h4>
+                    <ul class="space-y-4 text-slate-500">
+                        <li class="flex items-center gap-3"><i class="fas fa-envelope text-primary"></i> hello@devbase.com</li>
+                        <li class="flex items-center gap-3"><i class="fas fa-map-marker-alt text-primary"></i> Bangalore, India</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center pt-10 border-t border-slate-100 dark:border-slate-800 text-slate-400 text-sm">
+                &copy; 2026 DEV BASE. All rights reserved. Built with ❤️ for the community.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle Logic
+        function toggleTheme() {
+            const html = document.documentElement;
+            const icon = document.getElementById('theme-icon');
+            const iconMobile = document.getElementById('theme-icon-mobile');
+            
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                icon.className = 'fas fa-moon';
+                iconMobile.className = 'fas fa-moon';
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                icon.className = 'fas fa-sun';
+                iconMobile.className = 'fas fa-sun';
+            }
+        }
+
+        // Initialize Theme from Local Storage
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            document.getElementById('theme-icon').className = 'fas fa-sun';
+        }
+
+       
+        function toggleMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const icon = document.getElementById('menu-toggle-icon');
+    
+    // Toggle the visibility
+    menu.classList.toggle('hidden');
+    
+    // Switch between bars and X icon
+    if (menu.classList.contains('hidden')) {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+    } else {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+    }
+}
+
+// Close menu automatically if screen is resized to desktop
+window.addEventListener('resize', () => {
+    if (window.innerWidth >= 1024) {
+        document.getElementById('mobile-menu').classList.add('hidden');
+        document.getElementById('menu-toggle-icon').classList.replace('fa-times', 'fa-bars');
+    }
+});
+// Function to toggle direction and save to local storage
+function toggleDir() {
+    const html = document.documentElement;
+    const newDir = html.dir === 'ltr' ? 'rtl' : 'ltr';
+    
+    // Apply the direction
+    html.dir = newDir;
+    
+    // Save to local storage
+    localStorage.setItem('site-direction', newDir);
+    
+    // Optional: Log it for debugging
+    console.log(`Direction changed to: ${newDir}`);
+}
+
+// Initialization: Run this as soon as the DOM is ready
+(function() {
+    const savedDir = localStorage.getItem('site-direction');
+    if (savedDir) {
+        document.documentElement.dir = savedDir;
+    } else {
+        // Default to LTR if nothing is saved
+        document.documentElement.dir = 'ltr';
+    }
+})();
+
+        // LTR / RTL Toggle
+        // function toggleDir() {
+        //     const html = document.documentElement;
+        //     html.dir = html.dir === 'ltr' ? 'rtl' : 'ltr';
+        // }
+    </script>
+</body>
+</html>
