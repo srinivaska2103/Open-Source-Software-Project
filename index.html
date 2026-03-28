@@ -26,70 +26,112 @@
     </style>
 </head>
 <body class="bg-white text-slate-900 dark:bg-slate-900 dark:text-white transition-all">
-<nav class="fixed w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+<nav id="main-nav" class="fixed w-full z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16 items-center">
             <a href="index.html" class="flex-shrink-0 flex items-center gap-2">
-                <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white">
+                <div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white shadow-lg shadow-primary/20">
                     <i class="fas fa-code"></i>
                 </div>
-                <span class="font-bold text-xl tracking-tight">DEV<span class="text-primary">BASE</span></span>
+                <span class="font-bold text-xl tracking-tight dark:text-white">DEV<span class="text-primary">BASE</span></span>
             </a>
 
-            <div class="hidden lg:flex space-x-8 items-center">
-                <a href="index.html" class="nav-link hover:text-primary transition-colors">Home 1</a>
-                <a href="home2.html" class="nav-link hover:text-primary transition-colors">Home 2</a>
-                <a href="aboutus.html" class="nav-link hover:text-primary transition-colors">About</a>
-                <a href="documentation.html" class="nav-link hover:text-primary transition-colors">Documentation</a>
-                <a href="service.html" class="nav-link hover:text-primary transition-colors">Services</a>
-                <a href="pricing.html" class="nav-link hover:text-primary transition-colors">Pricing</a>
-                <a href="contact.html" class="nav-link hover:text-primary transition-colors">Contact</a>
+            <div class="hidden lg:flex space-x-4 xl:space-x-8 items-center">
+                <a href="index.html" class="nav-link text-sm font-medium hover:text-primary transition-colors">Home 1</a>
+                <a href="home2.html" class="nav-link text-sm font-medium hover:text-primary transition-colors">Home 2</a>
+                <a href="aboutus.html" class="nav-link text-sm font-medium hover:text-primary transition-colors">About</a>
+                <a href="documentation.html" class="nav-link text-sm font-medium hover:text-primary transition-colors">Docs</a>
+                <a href="service.html" class="nav-link text-sm font-medium hover:text-primary transition-colors">Services</a>
+                <a href="pricing.html" class="nav-link text-sm font-medium hover:text-primary transition-colors">Pricing</a>
+                <a href="contact.html" class="nav-link text-sm font-medium hover:text-primary transition-colors">Contact</a>
             </div>
 
             <div class="lg:hidden flex items-center gap-2">
-                <button onclick="toggleTheme()" class="p-2 rounded-full"><i id="theme-icon-mobile" class="fas fa-moon"></i></button>
+                <button onclick="toggleTheme()" class="p-2 rounded-full dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                    <i id="theme-icon-mobile" class="fas fa-moon"></i>
+                </button>
                 <button onclick="toggleMenu()" class="text-2xl p-2 text-slate-600 dark:text-slate-300">
                     <i id="menu-toggle-icon" class="fas fa-bars"></i>
                 </button>
             </div>
             
-            <div class="hidden lg:flex items-center gap-4">
-                <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800">
+            <div class="hidden lg:flex items-center gap-3">
+                <button onclick="toggleTheme()" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors dark:text-white">
                     <i id="theme-icon" class="fas fa-moon"></i>
+                </button>
                 
-                <button onclick="toggleDir()" class="text-xs font-bold border px-2 py-1 rounded hover:border-primary transition-all">
-    LTR / RTL
-</button></button>
-                <!-- <button onclick="toggleDir()" class="text-xs font-bold border px-2 py-1 rounded hover:border-primary">LTR/RTL</button> -->
-                <a href="login.html">
-                    <button class="bg-primary text-white px-5 py-2 rounded-full font-medium hover:opacity-90 transition-all">Register</button>
+                <button onclick="toggleDir()" class="text-[10px] font-black border border-slate-200 dark:border-slate-700 px-2 py-1 rounded hover:border-primary transition-all dark:text-white uppercase tracking-tighter">
+                    LTR / RTL
+                </button>
+                
+                <a href="regesiter.html" class="ml-1">
+                    <button class="bg-primary text-white px-5 py-2 rounded-full font-bold text-sm hover:shadow-lg hover:shadow-primary/30 transition-all active:scale-95">Register</button>
                 </a>
             </div>
         </div>
     </div>
 
-    <div id="mobile-menu" class="hidden lg:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 px-6 py-8 shadow-xl">
-        <div class="flex flex-col space-y-2">
-            <a href="index.html" class="nav-link block py-3 text-lg font-medium border-b border-slate-100 dark:border-slate-800 last:border-0 hover:text-primary">Home 1</a>
-            <a href="home2.html" class="nav-link block py-3 text-lg font-medium border-b border-slate-100 dark:border-slate-800 last:border-0 hover:text-primary">Home 2</a>
-            <a href="aboutus.html" class="nav-link block py-3 text-lg font-medium border-b border-slate-100 dark:border-slate-800 last:border-0 hover:text-primary">About</a>
-            <a href="documentation.html" class="nav-link block py-3 text-lg font-medium border-b border-slate-100 dark:border-slate-800 last:border-0 hover:text-primary">Documentation</a>
-            <a href="service.html" class="nav-link block py-3 text-lg font-medium border-b border-slate-100 dark:border-slate-800 last:border-0 hover:text-primary">Services</a>
-            <a href="pricing.html" class="nav-link block py-3 text-lg font-medium border-b border-slate-100 dark:border-slate-800 last:border-0 hover:text-primary">Pricing</a>
-            <a href="contact.html" class="nav-link block py-3 text-lg font-medium border-b border-slate-100 dark:border-slate-800 last:border-0 hover:text-primary">Contact</a>
-        </div>
-        
-        <div class="mt-8 space-y-4">
-            <a href="login.html" class="block">
-                <button class="w-full bg-primary text-white py-4 rounded-xl font-bold text-lg">Register Now</button>
-            </a>
-           <button onclick="toggleDir()" class="text-xs font-bold border px-2 py-1 rounded hover:border-primary transition-all">
-    LTR / RTL
-</button>
-            <!-- <button onclick="toggleDir()" class="w-full border border-slate-300 dark:border-slate-700 py-3 rounded-xl font-medium">Switch LTR/RTL</button> -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 shadow-2xl max-h-[calc(100vh-64px)] overflow-y-auto">
+        <div class="px-6 py-8 space-y-1">
+            <a href="index.html" class="nav-link block py-3 text-lg font-bold border-b border-slate-50 dark:border-slate-800/50 hover:text-primary dark:text-white">Home 1</a>
+            <a href="home2.html" class="nav-link block py-3 text-lg font-bold border-b border-slate-50 dark:border-slate-800/50 hover:text-primary dark:text-white">Home 2</a>
+            <a href="aboutus.html" class="nav-link block py-3 text-lg font-bold border-b border-slate-50 dark:border-slate-800/50 hover:text-primary dark:text-white">About</a>
+            <a href="documentation.html" class="nav-link block py-3 text-lg font-bold border-b border-slate-50 dark:border-slate-800/50 hover:text-primary dark:text-white">Documentation</a>
+            <a href="service.html" class="nav-link block py-3 text-lg font-bold border-b border-slate-50 dark:border-slate-800/50 hover:text-primary dark:text-white">Services</a>
+            <a href="pricing.html" class="nav-link block py-3 text-lg font-bold border-b border-slate-50 dark:border-slate-800/50 hover:text-primary dark:text-white">Pricing</a>
+            <a href="contact.html" class="nav-link block py-3 text-lg font-bold last:border-0 hover:text-primary dark:text-white">Contact</a>
+            
+            <div class="pt-6 mt-6 border-t border-slate-100 dark:border-slate-800 space-y-4">
+                <a href="regesiter.html" class="block">
+                    <button class="w-full bg-primary text-white py-4 rounded-2xl font-black text-lg shadow-xl shadow-primary/20 transition-all active:scale-95">Create Account</button>
+                </a>
+                <button onclick="toggleDir()" class="w-full py-3 border border-slate-200 dark:border-slate-700 rounded-2xl font-bold text-sm text-slate-500 dark:text-slate-400">
+                    Switch Alignment (LTR/RTL)
+                </button>
+            </div>
         </div>
     </div>
 </nav>
+
+<script>
+    // --- Automatic Active State Logic ---
+    function setActiveNavLink() {
+        const currentPath = window.location.pathname.split("/").pop() || 'index.html';
+        const navLinks = document.querySelectorAll('.nav-link');
+        
+        navLinks.forEach(link => {
+            const linkPath = link.getAttribute('href');
+            if (linkPath === currentPath) {
+                link.classList.add('text-primary', 'font-bold');
+                link.classList.remove('hover:text-primary'); 
+            } else {
+                link.classList.remove('text-primary', 'font-bold');
+            }
+        });
+    }
+
+    // --- Automatic Menu Management ---
+    function toggleMenu() {
+        const menu = document.getElementById('mobile-menu');
+        const icon = document.getElementById('menu-toggle-icon');
+        const isHidden = menu.classList.toggle('hidden');
+        
+        // Update Icon based on state
+        icon.className = isHidden ? 'fas fa-bars' : 'fas fa-times';
+    }
+
+    // Auto-close menu when resizing back to desktop view
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 1024) {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-toggle-icon');
+            menu.classList.add('hidden');
+            icon.className = 'fas fa-bars';
+        }
+    });
+
+    window.addEventListener('DOMContentLoaded', setActiveNavLink);
+</script>
    
 
 <style>
@@ -223,10 +265,10 @@ window.addEventListener('DOMContentLoaded', handleActiveNav);
         </button>
     </a>
     
-    <a href="documentation.html" class="w-full sm:w-auto">
+    <!-- <a href="documentation.html" class="w-full sm:w-auto">
         <button class="w-full bg-white/50 dark:bg-slate-800/50 backdrop-blur-sm border border-slate-200 dark:border-slate-700 px-10 py-5 rounded-2xl font-bold text-lg hover:bg-white dark:hover:bg-slate-700 transition-all">
             📄 Documentation
-        </button>
+        </button> -->
     </a>
     
 </div>
@@ -366,139 +408,133 @@ window.addEventListener('DOMContentLoaded', handleActiveNav);
             </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            
-            <div class="reveal-up group relative p-1 rounded-3xl bg-gradient-to-b from-slate-200 to-transparent dark:from-slate-700 dark:to-transparent hover:from-primary transition-all duration-500">
-                <div class="bg-white dark:bg-slate-900 rounded-[22px] p-8 h-full">
-                    <div class="mb-6 overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-800 h-40 flex items-center justify-center relative">
-                        <i class="fas fa-cubes text-5xl text-primary/20 absolute group-hover:scale-125 transition-transform duration-500"></i>
-                        <div class="z-10 text-center p-4">
-                             <div class="w-full h-2 bg-primary/20 rounded-full mb-2"></div>
-                             <div class="w-2/3 h-2 bg-primary/20 rounded-full mx-auto"></div>
-                        </div>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 flex items-center gap-3">
-                        <i class="fas fa-puzzle-piece text-primary"></i> Modular Architecture
-                    </h3>
-                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
-                        Plug-and-play components. Import only what you need, keeping your bundle size small and your logic clean.
-                    </p>
-                </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 sm:px-6">
+    
+    <div class="reveal-up group relative p-1 rounded-3xl bg-gradient-to-b from-slate-200 to-transparent dark:from-slate-700 dark:to-transparent hover:from-primary transition-all duration-500">
+        <div class="bg-white dark:bg-slate-900 rounded-[22px] p-8 h-full">
+            <div class="mb-6 overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-800 h-40 relative">
+                <img src="assets/arch" 
+                     alt="Architecture" 
+                     class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700">
+                <div class="absolute inset-0 bg-primary/10 mix-blend-multiply"></div>
             </div>
-
-            <div class="reveal-up delay-100 group relative p-1 rounded-3xl bg-gradient-to-b from-slate-200 to-transparent dark:from-slate-700 dark:to-transparent hover:from-primary transition-all duration-500">
-                <div class="bg-white dark:bg-slate-900 rounded-[22px] p-8 h-full">
-                    <div class="mb-6 overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-800 h-40 flex items-center justify-center">
-                        <i class="fas fa-network-wired text-5xl text-blue-500/20 absolute group-hover:rotate-12 transition-transform"></i>
-                        <code class="text-[10px] text-blue-500 font-mono bg-blue-500/5 p-3 rounded-lg border border-blue-500/20">
-                            GET /api/v1/deploy
-                        </code>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 flex items-center gap-3">
-                        <i class="fas fa-bolt text-blue-500"></i> API Ready
-                    </h3>
-                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
-                        Pre-configured REST and GraphQL endpoints. Seamlessly connect your frontend to any data source in minutes.
-                    </p>
-                </div>
-            </div>
-
-            <div class="reveal-up delay-200 group relative p-1 rounded-3xl bg-gradient-to-b from-slate-200 to-transparent dark:from-slate-700 dark:to-transparent hover:from-primary transition-all duration-500">
-                <div class="bg-white dark:bg-slate-900 rounded-[22px] p-8 h-full">
-                    <div class="mb-6 overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-800 h-40 flex flex-col items-center justify-center">
-                        <i class="fas fa-feather-alt text-5xl text-green-500/20 mb-2"></i>
-                        <span class="text-2xl font-black text-green-500 group-hover:scale-110 transition-transform">12kb</span>
-                        <span class="text-[10px] uppercase tracking-widest opacity-50">Gzipped</span>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 flex items-center gap-3">
-                        <i class="fas fa-leaf text-green-500"></i> Lightweight
-                    </h3>
-                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
-                        Zero dependencies on heavy libraries. Experience lightning-fast load times and 100/100 Lighthouse scores.
-                    </p>
-                </div>
-            </div>
-
-            <div class="reveal-up delay-300 group relative p-1 rounded-3xl bg-gradient-to-b from-slate-200 to-transparent dark:from-slate-700 dark:to-transparent hover:from-primary transition-all duration-500">
-                <div class="bg-white dark:bg-slate-900 rounded-[22px] p-8 h-full">
-                    <div class="mb-6 overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-800 h-40 flex items-center justify-center gap-4">
-                        <i class="fab fa-apple text-3xl opacity-20 group-hover:opacity-100 transition-opacity"></i>
-                        <i class="fab fa-android text-3xl opacity-20 group-hover:opacity-100 transition-opacity delay-75"></i>
-                        <i class="fab fa-windows text-3xl opacity-20 group-hover:opacity-100 transition-opacity delay-150"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 flex items-center gap-3">
-                        <i class="fas fa-mobile-alt text-purple-500"></i> Cross-Platform
-                    </h3>
-                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
-                        Build once, deploy everywhere. Full support for Web, iOS, Android, and Desktop environments out of the box.
-                    </p>
-                </div>
-            </div>
-
-            <div class="reveal-up delay-400 group relative p-1 rounded-3xl bg-gradient-to-b from-slate-200 to-transparent dark:from-slate-700 dark:to-transparent hover:from-primary transition-all duration-500">
-                <div class="bg-white dark:bg-slate-900 rounded-[22px] p-8 h-full">
-                    <div class="mb-6 overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-800 h-40 flex items-center justify-center">
-                        <div class="flex -space-x-4">
-                            <img class="w-12 h-12 rounded-full border-4 border-white dark:border-slate-900" src="assets/t1" alt="user">
-                            <img class="w-12 h-12 rounded-full border-4 border-white dark:border-slate-900" src="assets/t2" alt="user">
-                            <img class="w-12 h-12 rounded-full border-4 border-white dark:border-slate-900" src="assets/t3" alt="user">
-                            <div class="w-12 h-12 rounded-full border-4 border-white dark:border-slate-900 bg-primary text-white flex items-center justify-center text-xs font-bold">+5k</div>
-                        </div>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3 flex items-center gap-3">
-                        <i class="fas fa-heart text-pink-500"></i> Community Driven
-                    </h3>
-                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
-                        Trusted by over 5,000+ developers. Our roadmap is defined by our users through transparent GitHub discussions.
-                    </p>
-                </div>
-            </div>
-            <div class="reveal-up delay-500 group relative p-1 rounded-3xl bg-gradient-to-br from-cyan-400 to-primary dark:from-cyan-900 dark:to-primary/20 hover:scale-[1.02] transition-all duration-500">
-    <div class="bg-white dark:bg-slate-900 rounded-[22px] p-8 h-full overflow-hidden relative">
-        
-        <div class="absolute -top-10 -right-10 w-32 h-32 bg-primary/10 rounded-full blur-3xl group-hover:bg-primary/20 transition-colors"></div>
-
-        <div class="mb-6 rounded-xl bg-slate-900 dark:bg-black h-40 flex flex-col items-center justify-center relative overflow-hidden">
-            <div class="absolute w-20 h-20 border border-primary/50 rounded-full animate-ping"></div>
-            <div class="absolute w-32 h-32 border border-primary/30 rounded-full animate-[ping_2s_linear_infinite]"></div>
-            
-            <div class="z-10 flex flex-col items-center">
-                <div class="flex items-baseline gap-1">
-                    <span class="text-3xl font-black text-white tracking-tighter">99.9</span>
-                    <span class="text-primary font-bold">%</span>
-                </div>
-                <div class="text-[10px] text-slate-400 uppercase tracking-[0.2em] font-bold">Uptime Reliability</div>
-            </div>
-
-            <div class="absolute bottom-4 left-4 right-4 flex gap-1 justify-between">
-                <div class="h-1 w-full bg-green-500 rounded-full opacity-40"></div>
-                <div class="h-1 w-full bg-green-500 rounded-full"></div>
-                <div class="h-1 w-full bg-green-500 rounded-full"></div>
-                <div class="h-1 w-full bg-green-400 rounded-full animate-pulse"></div>
-            </div>
+            <h3 class="text-xl font-bold mb-3 flex items-center gap-3">
+                <i class="fas fa-puzzle-piece text-primary"></i> Modular Architecture
+            </h3>
+            <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                Plug-and-play components. Import only what you need, keeping your bundle size small and your logic clean.
+            </p>
         </div>
+    </div>
 
-        <h3 class="text-xl font-bold mb-3 flex items-center gap-3">
-            <div class="relative flex h-3 w-3">
-                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-                <span class="relative inline-flex rounded-full h-3 w-3 bg-cyan-500"></span>
+    <div class="reveal-up delay-100 group relative p-1 rounded-3xl bg-gradient-to-b from-slate-200 to-transparent dark:from-slate-700 dark:to-transparent hover:from-primary transition-all duration-500">
+        <div class="bg-white dark:bg-slate-900 rounded-[22px] p-8 h-full">
+            <div class="mb-6 overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-800 h-40 relative">
+                <img src="assets/api" 
+                     alt="API" 
+                     class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700">
+                <div class="absolute top-4 left-4">
+                    <code class="text-[10px] text-white font-mono bg-blue-600 px-3 py-1 rounded-full shadow-lg">GET /v1/deploy</code>
+                </div>
             </div>
-            Enterprise Reliability
-        </h3>
-        
-        <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
-            Engineered for high-availability systems. Our core is built with self-healing protocols that ensure your open-source projects stay online 24/7.
-        </p>
+            <h3 class="text-xl font-bold mb-3 flex items-center gap-3">
+                <i class="fas fa-bolt text-blue-500"></i> API Ready
+            </h3>
+            <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                Pre-configured REST and GraphQL endpoints. Seamlessly connect your frontend to any data source in minutes.
+            </p>
+        </div>
+    </div>
 
-        <div class="mt-6 transform translate-y-12 group-hover:translate-y-0 transition-transform duration-300">
-            <a href="#" class="text-sm font-bold text-primary flex items-center gap-2">
-                View Status Page <i class="fas fa-external-link-alt text-xs"></i>
-            </a>
+    <div class="reveal-up delay-200 group relative p-1 rounded-3xl bg-gradient-to-b from-slate-200 to-transparent dark:from-slate-700 dark:to-transparent hover:from-primary transition-all duration-500">
+        <div class="bg-white dark:bg-slate-900 rounded-[22px] p-8 h-full flex flex-col">
+            <div class="mb-6 overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-800 h-40 flex flex-col items-center justify-center relative">
+                <img src="assets/performance" 
+                     alt="Performance" 
+                     class="absolute inset-0 w-full h-full object-cover opacity-30 grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700">
+                <span class="z-10 text-3xl font-black text-green-500 group-hover:scale-110 transition-transform">12kb</span>
+                <span class="z-10 text-[10px] uppercase tracking-widest text-slate-400 font-bold">Gzipped Bundle</span>
+            </div>
+            <h3 class="text-xl font-bold mb-3 flex items-center gap-3">
+                <i class="fas fa-leaf text-green-500"></i> Lightweight
+            </h3>
+            <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                Zero dependencies on heavy libraries. Experience lightning-fast load times and 100/100 Lighthouse scores.
+            </p>
+        </div>
+    </div>
+
+    <div class="reveal-up delay-300 group relative p-1 rounded-3xl bg-gradient-to-b from-slate-200 to-transparent dark:from-slate-700 dark:to-transparent hover:from-primary transition-all duration-500">
+        <div class="bg-white dark:bg-slate-900 rounded-[22px] p-8 h-full">
+            <div class="mb-6 overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-800 h-40 relative">
+                <img src="assets/device" 
+                     alt="Devices" 
+                     class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700">
+                <div class="absolute inset-0 flex items-center justify-center gap-4 bg-black/20 backdrop-blur-[2px]">
+                    <i class="fab fa-apple text-3xl text-white opacity-80"></i>
+                    <i class="fab fa-android text-3xl text-white opacity-80"></i>
+                    <i class="fab fa-windows text-3xl text-white opacity-80"></i>
+                </div>
+            </div>
+            <h3 class="text-xl font-bold mb-3 flex items-center gap-3">
+                <i class="fas fa-mobile-alt text-purple-500"></i> Cross-Platform
+            </h3>
+            <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                Build once, deploy everywhere. Full support for Web, iOS, Android, and Desktop environments out of the box.
+            </p>
+        </div>
+    </div>
+
+    <div class="reveal-up delay-400 group relative p-1 rounded-3xl bg-gradient-to-b from-slate-200 to-transparent dark:from-slate-700 dark:to-transparent hover:from-primary transition-all duration-500">
+        <div class="bg-white dark:bg-slate-900 rounded-[22px] p-8 h-full">
+            <div class="mb-6 overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-800 h-40 relative flex items-center justify-center">
+                <img src="assets/community" 
+                     alt="Community" 
+                     class="absolute inset-0 w-full h-full object-cover grayscale opacity-40">
+                <div class="flex -space-x-4 z-10">
+                    <img class="w-12 h-12 rounded-full border-4 border-white dark:border-slate-900" src="https://i.pravatar.cc/100?u=1" alt="user">
+                    <img class="w-12 h-12 rounded-full border-4 border-white dark:border-slate-900" src="https://i.pravatar.cc/100?u=2" alt="user">
+                    <img class="w-12 h-12 rounded-full border-4 border-white dark:border-slate-900" src="https://i.pravatar.cc/100?u=3" alt="user">
+                    <div class="w-12 h-12 rounded-full border-4 border-white dark:border-slate-900 bg-primary text-white flex items-center justify-center text-xs font-bold">+5k</div>
+                </div>
+            </div>
+            <h3 class="text-xl font-bold mb-3 flex items-center gap-3">
+                <i class="fas fa-heart text-pink-500"></i> Community Driven
+            </h3>
+            <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                Trusted by over 5,000+ developers. Our roadmap is defined by our users through transparent GitHub discussions.
+            </p>
+        </div>
+    </div>
+
+    <div class="reveal-up delay-500 group relative p-1 rounded-3xl bg-gradient-to-br from-cyan-400 to-primary dark:from-cyan-900 dark:to-primary/20 hover:scale-[1.02] transition-all duration-500">
+        <div class="bg-white dark:bg-slate-900 rounded-[22px] p-8 h-full overflow-hidden relative">
+            <div class="mb-6 rounded-xl bg-slate-900 dark:bg-black h-40 flex flex-col items-center justify-center relative overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" 
+                     alt="Reliability" 
+                     class="absolute inset-0 w-full h-full object-cover opacity-20 grayscale">
+                <div class="z-10 flex flex-col items-center">
+                    <div class="flex items-baseline gap-1">
+                        <span class="text-3xl font-black text-white tracking-tighter">99.9</span>
+                        <span class="text-primary font-bold">%</span>
+                    </div>
+                    <div class="text-[10px] text-slate-400 uppercase tracking-[0.2em] font-bold">Uptime Guaranteed</div>
+                </div>
+            </div>
+
+            <h3 class="text-xl font-bold mb-3 flex items-center gap-3">
+                <div class="relative flex h-3 w-3">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-3 w-3 bg-cyan-500"></span>
+                </div>
+                Enterprise Reliability
+            </h3>
+            <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed">
+                Engineered for high-availability. Our core is built with self-healing protocols that ensure 24/7 online presence.
+            </p>
         </div>
     </div>
 </div>
-
-        </div>
     </div>
 </section>
 
