@@ -6,7 +6,9 @@
     <link rel="icon" href="assets/code (2).png">
     <title>Login | DEV BASE</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -15,15 +17,16 @@
     </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; transition: background-color 0.3s; }
-        .glass-effect { backdrop-filter: blur(16px); background: rgba(255, 255, 255, 0.05); }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        [x-cloak] { display: none !important; }
+        input::-ms-reveal, input::-ms-clear { display: none; }
     </style>
 </head>
-<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white min-h-screen flex flex-col">
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white min-h-screen flex flex-col transition-colors duration-300">
 
-    <header class="fixed top-0 w-full z-50 p-6 flex justify-between items-center pointer-events-none">
-        <a href="index.html" class="pointer-events-auto flex items-center gap-2 group transition-all">
-            <div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white shadow-lg shadow-primary/30 group-hover:scale-110 transition-transform">
+    <header class="fixed top-0 w-full z-50 p-4 sm:p-6 flex justify-between items-center pointer-events-none">
+        <a href="index.html" class="pointer-events-auto flex items-center gap-2 group">
+            <div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white shadow-lg shadow-primary/30 group-hover:rotate-6 transition-transform">
                 <i class="fas fa-code text-xl"></i>
             </div>
             <span class="font-bold text-xl tracking-tight dark:text-white">DEV <span class="text-primary">BASE</span></span>
@@ -36,11 +39,11 @@
         </div>
     </header>
 
-    <main class="flex-grow flex items-center justify-center p-4">
-        <div class="w-full max-w-[1000px] bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-2 min-h-[600px] border border-slate-100 dark:border-slate-800">
+    <main class="flex-grow flex items-center justify-center p-3 sm:p-6 pt-24">
+        <div class="w-full max-w-[1000px] bg-white dark:bg-slate-900 rounded-[2rem] sm:rounded-[2.5rem] shadow-2xl overflow-hidden grid grid-cols-1 lg:grid-cols-2 min-h-[550px] border border-slate-100 dark:border-slate-800">
             
             <div class="hidden lg:flex flex-col justify-center p-12 bg-primary relative overflow-hidden text-white">
-                <div class="absolute inset-0 opacity-10 select-none pointer-events-none p-10 font-mono text-sm leading-relaxed">
+                <div class="absolute inset-0 opacity-10 font-mono text-sm leading-relaxed p-10 select-none">
                     const session = { <br>
                     &nbsp;&nbsp;auth: 'required',<br>
                     &nbsp;&nbsp;user: 'developer',<br>
@@ -52,78 +55,87 @@
                 <div class="relative z-10">
                     <h2 class="text-5xl font-extrabold mb-6 leading-tight">Welcome to the <br>Core Engine.</h2>
                     <p class="text-blue-100 text-lg opacity-80 max-w-sm">
-                        Access your developer dashboard, manage your deployments, and stay connected with the global community.
+                        Access your developer dashboard, manage deployments, and connect with the global community.
                     </p>
                 </div>
                 
                 <div class="mt-12 flex gap-4 relative z-10">
                     <div class="flex -space-x-3">
-                        <img class="w-10 h-10 rounded-full border-2 border-primary" src="https://i.pravatar.cc/100?u=dev1">
-                        <img class="w-10 h-10 rounded-full border-2 border-primary" src="https://i.pravatar.cc/100?u=dev2">
-                        <img class="w-10 h-10 rounded-full border-2 border-primary" src="https://i.pravatar.cc/100?u=dev3">
+                        <img class="w-10 h-10 rounded-full border-2 border-primary" src="assets/t2">
+                        <img class="w-10 h-10 rounded-full border-2 border-primary" src="assets/t4">
+                        <img class="w-10 h-10 rounded-full border-2 border-primary" src="assets/t1">
                     </div>
                     <p class="text-xs font-medium self-center text-blue-50">Trusted by 10k+ developers</p>
                 </div>
             </div>
 
-            <div class="p-8 md:p-14 flex flex-col justify-center">
-                
-                <div class="space-y-8">
+            <div class="p-6 sm:p-10 md:p-14 flex flex-col justify-center">
+                <div class="space-y-6 sm:space-y-8">
                     <div class="text-center lg:text-left">
-                        <h3 class="text-3xl font-bold mb-2 dark:text-white">Sign In</h3>
-                        <p class="text-slate-500 dark:text-slate-400 text-sm">Welcome back! Please enter your details.</p>
+                        <h3 class="text-2xl sm:text-3xl font-bold mb-2 dark:text-white">Sign In</h3>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm">Enter your credentials to access DEV BASE.</p>
                     </div>
 
-                    <div class="grid grid-cols-3 gap-4">
-                        <button title="Sign in with Google" class="flex items-center justify-center py-3 px-4 border border-slate-200 dark:border-slate-700 rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-800 hover:border-primary transition-all">
-                            <img src="https://www.svgrepo.com/show/355037/google.svg" class="w-6 h-6">
+                    <div class="grid grid-cols-3 gap-3 sm:gap-4">
+                        <button title="Google" class="flex items-center justify-center py-3 border border-slate-200 dark:border-slate-700 rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-all">
+                            <img src="https://www.svgrepo.com/show/355037/google.svg" class="w-5 h-5 sm:w-6 sm:h-6">
                         </button>
-                        <button title="Sign in with GitHub" class="flex items-center justify-center py-3 px-4 border border-slate-200 dark:border-slate-700 rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-800 hover:border-primary transition-all">
-                            <i class="fab fa-github text-2xl dark:text-white"></i>
+                        <button title="GitHub" class="flex items-center justify-center py-3 border border-slate-200 dark:border-slate-700 rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-all">
+                            <i class="fab fa-github text-xl sm:text-2xl"></i>
                         </button>
-                        <button title="Sign in with Apple" class="flex items-center justify-center py-3 px-4 border border-slate-200 dark:border-slate-700 rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-800 hover:border-primary transition-all">
-                            <i class="fab fa-apple text-2xl dark:text-white"></i>
+                        <button title="Apple" class="flex items-center justify-center py-3 border border-slate-200 dark:border-slate-700 rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-all">
+                            <i class="fab fa-apple text-xl sm:text-2xl"></i>
                         </button>
                     </div>
 
-                    <div class="relative flex items-center py-2">
+                    <div class="relative flex items-center">
                         <div class="flex-grow border-t border-slate-100 dark:border-slate-800"></div>
                         <span class="mx-3 text-[10px] font-bold text-slate-400 uppercase tracking-widest">or email</span>
                         <div class="flex-grow border-t border-slate-100 dark:border-slate-800"></div>
                     </div>
 
-                    <div class="space-y-4">
-                        <div class="relative">
-                            <i class="fas fa-envelope absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
-                            <input type="email" placeholder="Email Address" class="w-full pl-12 pr-5 py-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-transparent focus:ring-2 focus:ring-primary outline-none transition-all dark:text-white">
+                    <div class="space-y-4" x-data="{ show: false }">
+                        <div class="relative group">
+                            <i class="fas fa-envelope absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors"></i>
+                            <input type="email" placeholder="Email Address" class="w-full pl-12 pr-5 py-3.5 sm:py-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-transparent focus:ring-2 focus:ring-primary outline-none transition-all dark:text-white">
                         </div>
+
                         <div class="space-y-2">
-                            <div class="relative">
-                                <i class="fas fa-lock absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
-                                <input type="password" placeholder="Password" class="w-full pl-12 pr-5 py-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-transparent focus:ring-2 focus:ring-primary outline-none transition-all dark:text-white">
+                            <div class="relative group">
+                                <i class="fas fa-lock absolute left-5 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors z-20"></i>
+                                <input :type="show ? 'text' : 'password'" 
+                                       placeholder="Password" 
+                                       class="w-full pl-12 pr-12 py-3.5 sm:py-4 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-transparent focus:ring-2 focus:ring-primary outline-none transition-all dark:text-white relative z-10">
+                                
+                                <button type="button" @click="show = !show" class="absolute right-4 top-1/2 -translate-y-1/2 z-30 text-slate-400 hover:text-primary p-2 transition-colors focus:outline-none">
+                                    <i class="fas" :class="show ? 'fa-eye-slash' : 'fa-eye'"></i>
+                                </button>
                             </div>
-                            <div class="text-right">
-                                <a href="#" class="text-xs font-bold text-primary hover:underline">Forgot Password?</a>
+                            <div class="flex justify-end">
+                                <a href="#" class="text-[11px] sm:text-xs font-bold text-primary hover:underline">Forgot Password?</a>
                             </div>
                         </div>
                     </div>
 
-                    <button class="w-full bg-primary text-white py-4 rounded-2xl font-bold text-lg shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all">
-                        Login to Dashboard
-                    </button>
-
-                    <p class="text-center text-sm text-slate-500 dark:text-slate-400">
-                        Don't have an account? 
-                        <a href="regesiter.html" class="text-primary font-bold hover:underline">sign up?</a>
-                    </p>
+                    <div class="space-y-4 pt-2">
+                        <button class="w-full bg-primary text-white py-4 rounded-2xl font-bold text-lg shadow-xl shadow-primary/20 hover:scale-[1.01] active:scale-95 transition-all">
+                            Login to Dashboard
+                        </button>
+                        <p class="text-center text-sm text-slate-500 dark:text-slate-400">
+                            Don't have an account? 
+                            <a href="regesiter.html" class="text-primary font-bold hover:underline">Sign up</a>
+                        </p>
+                    </div>
                 </div>
-
             </div>
         </div>
     </main>
 
+    <footer class="p-6 text-center text-[10px] uppercase tracking-widest text-slate-400">
+        &copy; 2026 DEV BASE Engine. All rights reserved.
+    </footer>
+
     <script>
-        // --- Theme Management ---
         function toggleTheme() {
             const isDark = document.documentElement.classList.toggle('dark');
             const icon = document.getElementById('theme-icon');
@@ -131,7 +143,6 @@
             icon.className = isDark ? 'fas fa-sun text-yellow-400' : 'fas fa-moon text-primary';
         }
 
-        // --- Initialize State ---
         window.onload = () => {
             if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
                 document.documentElement.classList.add('dark');
