@@ -72,8 +72,8 @@
             <div class="p-6 sm:p-10 md:p-14 flex flex-col justify-center">
                 <div class="space-y-6 sm:space-y-8">
                     <div class="text-center lg:text-left">
-                        <h3 class="text-2xl sm:text-3xl font-bold mb-2 dark:text-white">Sign In</h3>
-                        <p class="text-slate-500 dark:text-slate-400 text-sm">Enter your credentials to access DEV BASE.</p>
+                        <h3 class="text-2xl sm:text-3xl text-center font-bold mb-2 dark:text-white">Sign In</h3>
+                        <p class="text-slate-500 text-center dark:text-slate-400 text-sm">Enter your credentials to access DEV BASE.</p>
                     </div>
 
                     <div class="grid grid-cols-3 gap-3 sm:gap-4">
@@ -111,9 +111,23 @@
                                     <i class="fas" :class="show ? 'fa-eye-slash' : 'fa-eye'"></i>
                                 </button>
                             </div>
-                            <div class="flex justify-end">
-                                <a href="#" class="text-[11px] sm:text-xs font-bold text-primary hover:underline">Forgot Password?</a>
-                            </div>
+                            <div class="flex items-center justify-between px-1">
+    <label class="flex items-center gap-2 cursor-pointer group">
+        <div class="relative">
+            <input type="checkbox" class="sr-only peer">
+            <div class="w-4 h-4 sm:w-5 sm:h-5 border-2 border-slate-300 dark:border-slate-700 rounded-md peer-checked:bg-primary peer-checked:border-primary transition-all flex items-center justify-center">
+                <i class="fas fa-check text-[8px] sm:text-[10px] text-white opacity-0 peer-checked:opacity-100 transition-opacity"></i>
+            </div>
+        </div>
+        <span class="text-[11px] sm:text-xs font-bold text-slate-500 dark:text-slate-400 group-hover:text-primary transition-colors">
+            Remember me
+        </span>
+    </label>
+
+    <a href="#" class="text-[11px] sm:text-xs font-bold text-primary hover:underline">
+        Forgot Password?
+    </a>
+</div>
                         </div>
                     </div>
 
